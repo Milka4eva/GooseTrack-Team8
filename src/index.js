@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PersistGate persistor={persistor}>
       <Provider store={store}>
-        <Router basename="/team-project-group-8">
+        <Router basename="/GooseTrack-Team8">
           <App />
         </Router>
       </Provider>
