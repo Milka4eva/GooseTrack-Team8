@@ -11,6 +11,9 @@
         </clipPath>
       </defs>
     </symbol>
+    <symbol id="icon-log-in-mainpage" viewBox="0 0 32 32">
+        <path fill="none" stroke="#3e85f3" style="stroke: var(--color1, #3e85f3)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5263" d="M19.789 4.632h1.516c2.122 0 3.183 0 3.994 0.413 0.713 0.363 1.293 0.943 1.656 1.656 0.413 0.811 0.413 1.872 0.413 3.994v10.611c0 2.122 0 3.183-0.413 3.994-0.363 0.713-0.943 1.293-1.656 1.656-0.811 0.413-1.872 0.413-3.994 0.413h-1.516M13.474 9.684l6.316 6.316M19.789 16l-6.316 6.316M19.789 16h-15.158"></path>
+    </symbol>
     <symbol id="calendar-close-sf" viewBox="0 0 20 20">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5 5 15M5 5l10 10" />
     </symbol>
