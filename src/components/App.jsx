@@ -5,18 +5,17 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import { Suspense, lazy } from 'react';
 import GlobalStyle from '../globalStyles';
-import CalendarPage from './../pages/CalendarPage/CalendarPage';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
 import TestSharedLayoutPage from './TestSharedLayoutPage';
-
 
 const Login = lazy(() => import('../pages/Login'));
 const RegisterPage = lazy(() => import('../pages/Registration'));
 const AccountPage = lazy(() => import('../pages/Account'));
 const MainPage = lazy(() => import('../pages/Main'));
 const StatisticsPage = lazy(() => import('../pages/Statisctics'));
+const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 
  export const App = () => {
   const { userToken } = useAuth();
