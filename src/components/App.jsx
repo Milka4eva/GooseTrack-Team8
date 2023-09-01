@@ -8,7 +8,8 @@ import GlobalStyle from '../globalStyles';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
-import TestSharedLayoutPage from './TestSharedLayoutPage';
+import SideBar from '../components/SideBar/SideBar';
+import Header from '../components/Header/Header';
 
 const Login = lazy(() => import('../pages/Login'));
 const RegisterPage = lazy(() => import('../pages/Registration'));
@@ -17,7 +18,7 @@ const MainPage = lazy(() => import('../pages/Main'));
 const StatisticsPage = lazy(() => import('../pages/Statisctics'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 
- export const App = () => {
+export const App = () => {
   const { userToken } = useAuth();
   const dispatch = useDispatch();
 
@@ -33,9 +34,40 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
   return (
     <>
       <GlobalStyle />
-      
+
       <Routes>
-        <Route path="/" element={<TestSharedLayoutPage />}>
+        <Route path="/" element={<Header />}>
+          <Route
+            path="account"
+            element={
+              <Suspense>
+                <PrivateRoute>
+                  <AccountPage />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="statistics"
+            element={
+              <Suspense>
+                <PrivateRoute>
+                  <StatisticsPage />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="calendar"
+            element={
+              <Suspense>
+                <PrivateRoute>
+                  <CalendarPage />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+        </Route>
         <Route
           index
           element={
@@ -43,8 +75,8 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
               <MainPage />
             </Suspense>
           }
-          />
-           <Route
+        />
+        <Route
           path="register"
           element={
             <Suspense>
@@ -53,8 +85,8 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
               </PublicRoute>
             </Suspense>
           }
-          />
-           <Route
+        />
+        <Route
           path="login"
           element={
             <Suspense>
@@ -63,40 +95,8 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
               </PublicRoute>
             </Suspense>
           }
-          />
-           <Route
-          path="account"
-          element={
-            <Suspense>
-              <PrivateRoute>
-                <AccountPage />
-              </PrivateRoute>
-            </Suspense>
-          }
-          />
-           <Route
-          path="statistics"
-          element={
-            <Suspense>
-              <PrivateRoute>
-                <StatisticsPage />
-              </PrivateRoute>
-            </Suspense>
-          }
-          />
-           <Route
-          path="calendar"
-          element={
-            <Suspense>
-              <PrivateRoute>
-                <CalendarPage />
-              </PrivateRoute>
-            </Suspense>
-          }
         />
-          </Route>
       </Routes>
     </>
   );
 };
-
