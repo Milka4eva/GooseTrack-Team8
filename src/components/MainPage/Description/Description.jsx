@@ -15,7 +15,7 @@ export const Description = () => {
                 <MainPageImgConteiner>
                     <picture>
                         <source srcset={`${Img001Webp} 1x, ${Img001Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img001Jpg} 1x, ${Img001Jpg} 2x`} type="image/jpeg" />
+                        <source srcset={`${Img001Jpg} 1x, ${Img001Jpg2x} 2x`} type="image/jpeg" />
                         <MainPageIMG src={Img001Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
@@ -32,7 +32,7 @@ export const Description = () => {
                 <MainPageImgConteiner>
                     <picture>
                         <source srcset={`${Img002Webp} 1x, ${Img002Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img002Jpg} 1x, ${Img002Jpg} 2x`} type="image/jpeg" />
+                        <source srcset={`${Img002Jpg} 1x, ${Img002Jpg2x} 2x`} type="image/jpeg" />
                         <MainPageIMG src={Img002Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
@@ -47,9 +47,9 @@ export const Description = () => {
                 </MainPageTextConteiner>
                 <MainPageImgConteiner>
                     <picture>
-                        <source srcset={`${Img001Webp} 1x, ${Img001Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img001Jpg} 1x, ${Img001Jpg} 2x`} type="image/jpeg" />
-                        <MainPageIMG src={Img001Jpg} alt="Calendar" loading="lazy"/>
+                        <source srcset={`${Img003Webp} 1x, ${Img003Webp2x} 2x`} type="image/webp" />
+                        <source srcset={`${Img003Jpg} 1x, ${Img003Jpg2x} 2x`} type="image/jpeg" />
+                        <MainPageIMG src={Img003Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
             </li>
