@@ -23,6 +23,7 @@ import calendarCheckIcon from '../../images/Icons/calendar-check-black.svg';
 import userCheckIcon from '../../images/Icons/user-check-black.svg';
 import statisticsIcon from '../../images/Icons/statistics.svg';
 import logoutIcon from '../../images/Icons/log-out-button.svg';
+import { Suspense } from 'react';
 
 const SideBar = () => {
   const navigate = useNavigate();

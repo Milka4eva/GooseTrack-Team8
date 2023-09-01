@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const SideBarContainer = styled.div`
   max-width: 225px;
   padding: 24px 20px;
+  // background-color: black;
+
 
   @media (min-width: 768px) {
     padding: 32px 24px;
@@ -49,19 +51,43 @@ export const SideBarCloseBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  margin-bottom: 64px;
+
+  @media (min-width: 768px){
+    margin-bottom: 50px;
+  }
+
+  @media (min-width: 1440px){
+    margin-bottom: 32px;
+  }
 `;
 
 export const NavigationWraper = styled.div`
   max-width: 185px;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const NavigationItem = styled.li`
   margin-bottom: 18px;
 
+  &:last-child {
+    margin-bottom: 424px;
+  }
+
   @media (min-width: 768px) {
     margin-bottom: 16px;
+
+    &:last-child {
+    margin-bottom: 563px;
   }
+  }
+
+  @media (min-width: 1440px) {
+    &:last-child {
+    margin-bottom: 439px;
+  }
+  }
+  
 `;
 
 export const NavigationTitle = styled.p`
@@ -70,6 +96,10 @@ export const NavigationTitle = styled.p`
   font-weight: 600;
   font-size: 12px;
   margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const NavigationButtonLink = styled.a`

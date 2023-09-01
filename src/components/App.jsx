@@ -8,7 +8,6 @@ import GlobalStyle from '../globalStyles';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
-import SideBar from '../components/SideBar/SideBar';
 import Header from '../components/Header/Header';
 
 const Login = lazy(() => import('../pages/Login'));
