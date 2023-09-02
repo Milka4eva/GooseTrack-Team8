@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
 import Header from '../components/Header/Header';
+import Loader from '../components/Loader/Loader';
 
 const Login = lazy(() => import('../pages/Login'));
 const RegisterPage = lazy(() => import('../pages/Registration'));
@@ -18,7 +19,7 @@ const StatisticsPage = lazy(() => import('../pages/Statisctics'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 
 export const App = () => {
-  const { userToken } = useAuth();
+  const { userToken, isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +31,9 @@ export const App = () => {
     getUser();
   }, [dispatch, userToken]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <GlobalStyle />
 

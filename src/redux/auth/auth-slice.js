@@ -15,6 +15,7 @@ const handelRejected = state => {
   state.isLoggedIn = false;
   state.isRefreshing = false;
   state.error = true;
+  state.token = null;
 };
 
 const initialState = {
