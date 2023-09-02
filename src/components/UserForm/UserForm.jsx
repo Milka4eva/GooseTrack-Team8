@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/useAuth';
 import { updateUserInfo } from 'redux/auth/auth-operations';
 import { useFormik } from 'formik';
