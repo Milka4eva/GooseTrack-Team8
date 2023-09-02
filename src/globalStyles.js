@@ -29,7 +29,6 @@ $sectionBackground: #E3F3FF;
 
 h1 {
     color: #3E85F3;
-    background: #E3F3FF;
 }
 
 h2 {
