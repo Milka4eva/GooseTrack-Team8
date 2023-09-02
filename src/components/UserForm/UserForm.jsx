@@ -185,7 +185,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.name}</ErrorMessage>
             )}
             {errors.name && touched.name ? (
-              <Iconinput style={{ bottom: 28 }}>
+              <Iconinput>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
             ) : touched.name ? (
@@ -244,7 +244,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.email}</ErrorMessage>
             )}
             {errors.email && touched.email ? (
-              <Iconinput style={{ bottom: 28 }}>
+              <Iconinput>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
             ) : touched.email ? (
@@ -279,7 +279,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
             {errors.phone && touched.phone ? (
-              <Iconinput style={{ bottom: 28 }}>
+              <Iconinput>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
             ) : touched.phone ? (
@@ -312,7 +312,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.skype}</ErrorMessage>
             )}
             {errors.skype && touched.skype ? (
-              <Iconinput style={{ bottom: 28 }}>
+              <Iconinput>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
             ) : touched.skype ? (

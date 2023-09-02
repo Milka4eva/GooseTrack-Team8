@@ -402,8 +402,13 @@ export const Iconinput = styled.svg`
   position: absolute;
   width: 24px;
   height: 24px;
-  bottom: 11px;
+  top: 28px;
   right: 18px;
+
+  @media (min-width: 375px) {
+    top: 30px;
+  }
+
   @media (min-width: 768px) {
     width: 32px;
     height: 32px;
