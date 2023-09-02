@@ -185,7 +185,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.name}</ErrorMessage>
             )}
             {errors.name && touched.name ? (
-              <Iconinput>
+              <Iconinput style={{ bottom: 28 }}>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
             ) : touched.name ? (
@@ -243,11 +243,11 @@ const UserForm = () => {
             {errors.email && touched.email && (
               <ErrorMessage>{errors.email}</ErrorMessage>
             )}
-            {errors.name && touched.name ? (
-              <Iconinput>
+            {errors.email && touched.email ? (
+              <Iconinput style={{ bottom: 28 }}>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
-            ) : touched.name ? (
+            ) : touched.email ? (
               <Iconinput>
                 <use href={Icon + '#EmailDone'} />
               </Iconinput>
@@ -278,11 +278,11 @@ const UserForm = () => {
             {errors.phone && touched.phone && (
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
-            {errors.name && touched.name ? (
-              <Iconinput>
+            {errors.phone && touched.phone ? (
+              <Iconinput style={{ bottom: 28 }}>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
-            ) : touched.name ? (
+            ) : touched.phone ? (
               <Iconinput>
                 <use href={Icon + '#EmailDone'} />
               </Iconinput>
@@ -311,11 +311,11 @@ const UserForm = () => {
             {errors.skype && touched.skype && (
               <ErrorMessage>{errors.skype}</ErrorMessage>
             )}
-            {errors.name && touched.name ? (
-              <Iconinput>
+            {errors.skype && touched.skype ? (
+              <Iconinput style={{ bottom: 28 }}>
                 <use href={Icon + '#EmailError'} />
               </Iconinput>
-            ) : touched.name ? (
+            ) : touched.skype ? (
               <Iconinput>
                 <use href={Icon + '#EmailDone'} />
               </Iconinput>
