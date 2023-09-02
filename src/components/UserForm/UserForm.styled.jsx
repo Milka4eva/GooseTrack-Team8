@@ -262,6 +262,7 @@ export const Wrapper = styled.div`
 
 // Обгортка Label та Input
 export const WrapperInput = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
