@@ -1,8 +1,10 @@
+import UserForm from "components/UserForm/UserForm";
+
 const AccountPage = () => {
     return (
-      <div>
-        <p>AccountPage</p>
-      </div>
+      <>
+        <UserForm />
+      </>
     );
   };
   
