@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   HeaderContainer,
   ButtonFeedback,
@@ -16,31 +18,38 @@ import {
   NamePageContainerWithImg,
 } from './Header.styled';
 import { useMediaQuery } from '@chakra-ui/react';
-
 import Icon from '../../images/icons.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from 'redux/theme/theme-slice';
-import { selectTheme } from 'redux/theme/theme-selectors';
 
-//-----------------------------------------------------------------------------
-// з пропс забираемо всі потрібні дані імья сторінки, юзера , фото , наявність не виконаних завдань
-// при необхідності видалити маржини з контейнеру  HeaderContainer
-
-const Header = ({ props }) => {
-  const themeName = useSelector(selectTheme);
-  const dispatch = useDispatch();
+const Header = props => {
+  const [defaultThema, setDeafultThema] = useState(true);
   const [isHidenMenu] = useMediaQuery('(min-width: 1440px)');
 
   const handleChangeThema = () => {
-    dispatch(toggleTheme());
+    setDeafultThema(prev => !prev);
+  };
+
+  const namePageTitle = () => {
+    switch (props.namePage) {
+      case '/statistics':
+        return 'Statistics';
+
+      case '/account':
+        return 'Account';
+
+      case '/calendar':
+        return 'Calendar';
+
+      default:
+        break;
+    }
   };
 
   const defUser = require('../../images/defUser.jpg');
-
+  const { name, avatarUrl } = props.userInfo;
   return (
     <HeaderContainer>
       {isHidenMenu ? (
-        true ? (
+        false ? (
           <NamePageContainerWithImg>
             <img
               src={require('../../images/gusPage.png')}
@@ -49,7 +58,7 @@ const Header = ({ props }) => {
               width={64}
             />
             <NamePageDescriptionCont>
-              <NamePage>Name Page</NamePage>
+              <NamePage>{namePageTitle()}</NamePage>
               <NamePageDescription>
                 <NamePageDescriptionSpan>Let go</NamePageDescriptionSpan> of the
                 past and focus on the present!
@@ -58,12 +67,12 @@ const Header = ({ props }) => {
           </NamePageContainerWithImg>
         ) : (
           <NamePageContainer>
-            <NamePage>Name Page</NamePage>
+            <NamePage>{namePageTitle()}</NamePage>
           </NamePageContainer>
         )
       ) : (
         <MenuButton>
-          <MenuButtonIcon onClick={() => console.log('open navigation menu')}>
+          <MenuButtonIcon onClick={() => props.sideStatus(true)}>
             <use href={Icon + '#menu'} />
           </MenuButtonIcon>
         </MenuButton>
@@ -75,16 +84,16 @@ const Header = ({ props }) => {
         </ButtonFeedback>
         <ButtonChangeThema onClick={handleChangeThema}>
           <IconChangeThema>
-            {themeName === 'dark' ? (
+            {defaultThema ? (
               <use href={Icon + '#icon-moon'} />
             ) : (
               <use href={Icon + '#icon-sun'} />
             )}
           </IconChangeThema>
         </ButtonChangeThema>
-        <UserName>User Name</UserName>
-        {false ? (
-          <UserFoto src={props.userFoto} alt="userFoto" />
+        <UserName>{name}</UserName>
+        {avatarUrl ? (
+          <UserFoto src={avatarUrl} alt="userFoto" />
         ) : (
           <UserFoto src={defUser} alt="userFoto" />
         )}

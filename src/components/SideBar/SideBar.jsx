@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '@chakra-ui/react';
 
 import {
   SideBarContainer,
@@ -16,6 +17,9 @@ import {
   NavigationItem,
   LogOutBtn,
   LogOutBtnTitle,
+  SideBarWrapper,
+  SvgNav,
+  LogOutBtnSvg,
 } from './SideBar.styled';
 import logo from '../../images/Icons/goose-logo-m.png';
 import closeIcon from '../../images/Icons/close-menu-button.svg';
@@ -23,71 +27,79 @@ import calendarCheckIcon from '../../images/Icons/calendar-check-black.svg';
 import userCheckIcon from '../../images/Icons/user-check-black.svg';
 import statisticsIcon from '../../images/Icons/statistics.svg';
 import logoutIcon from '../../images/Icons/log-out-button.svg';
-import { Suspense } from 'react';
 
-const SideBar = () => {
+const SideBar = (props) => {
   const navigate = useNavigate();
+const [isHidenCloseButton] = useMediaQuery('(min-width: 1440px)');
 
   return (
     <>
       <SideBarContainer>
-        <SideBarHeaderWrapper>
-          <SideBarLogoWrapper>
-            <SideBarLogo src={logo} width="36" alt="Goose logo" />
-            <SideBarTitle>
-              G<SideBarTitleSpan>oo</SideBarTitleSpan>seTrack
-            </SideBarTitle>
-            <SideBarCloseBtn>
-              <svg width={24} height={24} alt={'close menu'}>
-                <use href={closeIcon + '#close-menu-button'}></use>
-              </svg>
-            </SideBarCloseBtn>
-          </SideBarLogoWrapper>
-        </SideBarHeaderWrapper>
+        <SideBarWrapper>
+          <SideBarHeaderWrapper>
+            <SideBarLogoWrapper>
+              <SideBarLogo src={logo} alt="Goose logo" />
+              <SideBarTitle>
+                G<SideBarTitleSpan>oo</SideBarTitleSpan>seTrack
+              </SideBarTitle>
+              {!isHidenCloseButton && (
+                <SideBarCloseBtn onClick={() => props.sideStatus(false)}>
+                  <svg width={24} height={24} alt={'close menu'}>
+                    <use href={closeIcon + '#close-menu-button'}></use>
+                  </svg>
+                </SideBarCloseBtn>
+              )}
+            </SideBarLogoWrapper>
+          </SideBarHeaderWrapper>
+          <NavigationWraper>
+            <NavigationTitle>User Panel</NavigationTitle>
+            <ul>
+              <NavigationItem>
+                <NavigationButtonLink to="account">
+                  <NavigationButton>
+                    <SvgNav alt={'user'}>
+                      <use href={userCheckIcon + '#user-check-black'}></use>
+                    </SvgNav>
 
-        <NavigationWraper>
-          <NavigationTitle>User Panel</NavigationTitle>
-          <ul>
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'user'}>
-                  <use href={userCheckIcon + '#user-check-black'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>My account</NavigationButtonTitle>
+                    <NavigationButtonTitle>My account</NavigationButtonTitle>
+                  </NavigationButton>
                 </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
+              </NavigationItem>
 
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'calendar'}>
-                  <use href={calendarCheckIcon + '#calendar-check-black'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>Calendar</NavigationButtonTitle>
-                </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
+              <NavigationItem>
+                <NavigationButtonLink to="calendar">
+                  <NavigationButton>
+                    <SvgNav alt={'calendar'}>
+                      <use
+                        href={calendarCheckIcon + '#calendar-check-black'}
+                      ></use>
+                    </SvgNav>
 
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'statistics'}>
-                  <use href={statisticsIcon + '#statistics'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>Statistics</NavigationButtonTitle>
+                    <NavigationButtonTitle>Calendar</NavigationButtonTitle>
+                  </NavigationButton>
                 </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
-          </ul>
-        </NavigationWraper>
+              </NavigationItem>
+
+              <NavigationItem>
+                <NavigationButtonLink to="statistics">
+                  <NavigationButton>
+                    <SvgNav alt={'statistics'}>
+                      <use href={statisticsIcon + '#statistics'}></use>
+                    </SvgNav>
+
+                    <NavigationButtonTitle>Statistics</NavigationButtonTitle>
+                  </NavigationButton>
+                </NavigationButtonLink>
+              </NavigationItem>
+            </ul>
+          </NavigationWraper>
+        </SideBarWrapper>
 
         <LogOutBtn onClick={() => navigate('login')}>
           <LogOutBtnTitle>Log out</LogOutBtnTitle>
-          <svg width={20} height={20} alt={'logout'}>
+          <LogOutBtnSvg alt={'logout'}>
             <use href={logoutIcon + '#logout'}></use>
-          </svg>
+          </LogOutBtnSvg>
         </LogOutBtn>
       </SideBarContainer>
     </>
