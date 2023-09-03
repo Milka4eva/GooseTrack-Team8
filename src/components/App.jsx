@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -8,7 +9,6 @@ import GlobalStyle from '../globalStyles';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
-import Header from '../components/Header/Header';
 
 const Login = lazy(() => import('../pages/Login'));
 const RegisterPage = lazy(() => import('../pages/Registration'));
@@ -16,6 +16,7 @@ const AccountPage = lazy(() => import('../pages/Account'));
 const MainPage = lazy(() => import('../pages/Main'));
 const StatisticsPage = lazy(() => import('../pages/Statisctics'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
+const MainLayout = lazy(() => import('../pages/MainLayout'));
 
 export const App = () => {
   const { userToken } = useAuth();
@@ -35,7 +36,16 @@ export const App = () => {
       <GlobalStyle />
 
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route
+          path="/"
+          element={
+            <Suspense>
+              <PrivateRoute>
+                <MainLayout />
+              </PrivateRoute>
+            </Suspense>
+          }
+        >
           <Route
             path="account"
             element={
@@ -67,34 +77,38 @@ export const App = () => {
             }
           />
         </Route>
-        <Route
-          index
-          element={
-            <Suspense>
-              <MainPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <Suspense>
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            </Suspense>
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <Suspense>
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            </Suspense>
-          }
-        />
+        {!userToken && (
+          <>
+            <Route
+              index
+              element={
+                <Suspense>
+                  <MainPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <Suspense>
+                  <PublicRoute>
+                    <RegisterPage />
+                  </PublicRoute>
+                </Suspense>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <Suspense>
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                </Suspense>
+              }
+            />
+          </>
+        )}
       </Routes>
     </>
   );

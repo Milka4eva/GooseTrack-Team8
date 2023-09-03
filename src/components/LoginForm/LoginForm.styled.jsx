@@ -165,11 +165,11 @@ export const ButtonSubmit = styled.button`
   justify-content: center;
   align-items: center;
   gap: 11px;
+  cursor: pointer;
   &:hover {
     background: #2b78ef;
   }
   @media (min-width: 768px) {
-    width: 400px;
     height: 56px;
     margin-top: 48px;
     font-size: 18px;
@@ -214,6 +214,7 @@ export const ButtonSignup = styled.button`
   background: #dcebf7;
   margin-right: auto;
   margin-left: auto;
+  cursor: pointer;
   &:hover {
     color: #2b78ef;
   }

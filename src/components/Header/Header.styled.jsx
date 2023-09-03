@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  margin-top: 24px;
-  margin-left: auto;
-  margin-right: auto;
   height: 32px;
   max-width: 335px;
   background: #f7f6f9;
@@ -15,8 +12,9 @@ export const HeaderContainer = styled.div`
     height: 44px;
   }
   @media (min-width: 1440px) {
-    max-width: 1087px;
-    margin-bottom: 38px;
+    max-width: 100%;
+    margin-bottom: 33px;
+    // padding:0 32px;
   }
 `;
 export const NamePageContainer = styled.div`
@@ -24,7 +22,7 @@ export const NamePageContainer = styled.div`
   align-items: center;
 `;
 export const NamePageContainerWithImg = styled.div`
-display: flex;
+  display: flex;
   padding-top: 6px;
 `;
 export const NamePage = styled.h1`
@@ -32,7 +30,7 @@ export const NamePage = styled.h1`
   color: #111;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
-    
+
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
@@ -57,7 +55,7 @@ export const NamePageDescriptionCont = styled.div`
 export const MenuButton = styled.button`
   padding: 0;
   border: none;
-  background: inherit
+  background: inherit;
 `;
 export const MenuButtonIcon = styled.svg`
   width: 24px;
@@ -119,7 +117,7 @@ export const UserName = styled.h2`
   display: inline;
   margin: 0 8px;
   color: #343434;
-  
+
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
