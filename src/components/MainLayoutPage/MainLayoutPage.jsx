@@ -11,6 +11,7 @@ import {
   SuBContainer,
   HeaderContainer,
 } from './MainLayoutPage.styled';
+import Loader from 'components/Loader/Loader';
 
 const MainLayoutPage = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -30,7 +31,7 @@ const MainLayoutPage = () => {
             userInfo={user}
             namePage={location.pathname}
           />
-          <Suspense>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </HeaderContainer>

@@ -1,12 +1,23 @@
+import Loader from 'components/Loader/Loader';
+import { Suspense } from 'react';
+
 const { useSelector } = require('react-redux');
-const { Navigate, useLocation } = require('react-router-dom');
+const { Navigate, Outlet, useLocation } = require('react-router-dom');
 const { selectToken } = require('redux/auth/auth-selectors');
 
-const PublicRoute = ({ children }) => {
+const PublicRoute = () => {
   const userIsLoggedIn = useSelector(selectToken);
   const location = useLocation();
 
-  return !userIsLoggedIn ? children : <Navigate to={location.state ?? '/'} />;
+  if (userIsLoggedIn) {
+    return <Navigate to={location.state ?? '/calendar'} />;
+  }
+
+  return (
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  );
 };
 
 export default PublicRoute;

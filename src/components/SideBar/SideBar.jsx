@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '@chakra-ui/react';
 
 import {
@@ -27,10 +26,16 @@ import calendarCheckIcon from '../../images/Icons/calendar-check-black.svg';
 import userCheckIcon from '../../images/Icons/user-check-black.svg';
 import statisticsIcon from '../../images/Icons/statistics.svg';
 import logoutIcon from '../../images/Icons/log-out-button.svg';
+import { useDispatch } from 'react-redux';
+import { logout } from 'redux/auth/auth-operations';
 
-const SideBar = (props) => {
-  const navigate = useNavigate();
-const [isHidenCloseButton] = useMediaQuery('(min-width: 1440px)');
+const SideBar = props => {
+  const dispatch = useDispatch();
+  const [isHidenCloseButton] = useMediaQuery('(min-width: 1440px)');
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -95,7 +100,7 @@ const [isHidenCloseButton] = useMediaQuery('(min-width: 1440px)');
           </NavigationWraper>
         </SideBarWrapper>
 
-        <LogOutBtn onClick={() => navigate('login')}>
+        <LogOutBtn onClick={handleLogOut}>
           <LogOutBtnTitle>Log out</LogOutBtnTitle>
           <LogOutBtnSvg alt={'logout'}>
             <use href={logoutIcon + '#logout'}></use>
