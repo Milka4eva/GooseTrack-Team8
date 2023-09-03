@@ -19,7 +19,7 @@ const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
 const MainLayout = lazy(() => import('../pages/MainLayout'));
 
 export const App = () => {
-  const { userToken } = useAuth();
+  const { userToken, isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +31,9 @@ export const App = () => {
     getUser();
   }, [dispatch, userToken]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <GlobalStyle />
 

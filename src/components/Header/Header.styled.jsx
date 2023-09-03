@@ -27,7 +27,7 @@ export const NamePageContainerWithImg = styled.div`
 `;
 export const NamePage = styled.h1`
   margin: 0;
-  color: #111;
+  color: ${props => props.theme.textColors.main};
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
 
