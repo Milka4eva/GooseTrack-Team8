@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import GlobalStyle from '../globalStyles';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
@@ -17,7 +16,6 @@ const AccountPage = lazy(() => import('../pages/Account'));
 const MainPage = lazy(() => import('../pages/Main'));
 const StatisticsPage = lazy(() => import('../pages/Statisctics'));
 const CalendarPage = lazy(() => import('../pages/CalendarPage/CalendarPage'));
-const MainLayout = lazy(() => import('../pages/MainLayout'));
 
 export const App = () => {
   const { userToken, isRefreshing } = useAuth();
@@ -39,79 +37,16 @@ export const App = () => {
       <GlobalStyle />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Suspense>
-              <PrivateRoute>
-                <MainLayout />
-              </PrivateRoute>
-            </Suspense>
-          }
-        >
-          <Route
-            path="account"
-            element={
-              <Suspense>
-                <PrivateRoute>
-                  <AccountPage />
-                </PrivateRoute>
-              </Suspense>
-            }
-          />
-          <Route
-            path="statistics"
-            element={
-              <Suspense>
-                <PrivateRoute>
-                  <StatisticsPage />
-                </PrivateRoute>
-              </Suspense>
-            }
-          />
-          <Route
-            path="calendar"
-            element={
-              <Suspense>
-                <PrivateRoute>
-                  <CalendarPage />
-                </PrivateRoute>
-              </Suspense>
-            }
-          />
+        <Route path="/" Component={PrivateRoute}>
+          <Route path="account" Component={AccountPage} />
+          <Route path="calendar/*" Component={CalendarPage} />
+          <Route path="statistics" Component={StatisticsPage} />
         </Route>
-        {!userToken && (
-          <>
-            <Route
-              index
-              element={
-                <Suspense>
-                  <MainPage />
-                </Suspense>
-              }
-            />
-            <Route
-              path="register"
-              element={
-                <Suspense>
-                  <PublicRoute>
-                    <RegisterPage />
-                  </PublicRoute>
-                </Suspense>
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <Suspense>
-                  <PublicRoute>
-                    <Login />
-                  </PublicRoute>
-                </Suspense>
-              }
-            />
-          </>
-        )}
+        <Route path="/" Component={PublicRoute}>
+          <Route index Component={MainPage} />
+          <Route path="register" Component={RegisterPage} />
+          <Route path="login" Component={Login} />
+        </Route>
       </Routes>
     </>
   );

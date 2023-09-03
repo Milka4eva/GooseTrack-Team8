@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import * as auth  from '../auth/auth-operations';
+import * as auth from '../auth/auth-operations';
 
 // axios.defaults.baseURL = 'https://goose-track-api-3uhn.onrender.com/api';
-
+axios.defaults.baseURL = 'https://goose-back-end.onrender.com';
 export const getTasksOfMonth = createAsyncThunk(
   'get/tasks',
   async (date, thunkAPI) => {
@@ -18,7 +18,7 @@ export const getTasksOfMonth = createAsyncThunk(
 
     try {
       const { data } = await axios.get(
-        `/tasks?month=${date.month}&year=${date.year}`
+        `/tasks/query?month=${date.month}&year=${date.year}`
       );
 
       return data;
