@@ -10,15 +10,8 @@ export const StyledDataPicker = styled(DatePicker)`
   font-size: 14px;
   font-weight: 600;
 
-  // mobile  width: 300px; pad 28px
-  // width: 354px; pad 36px
-  /* width: 100%; */
   max-width: 375px;
-  // width: 100%;
-  width: 303px;
   height: 34px;
-
-  /* min-width: 250px; */
 
   padding-left: 14px;
   padding-right: 14px;

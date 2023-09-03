@@ -34,7 +34,8 @@ const UserForm = () => {
   const [isFormDirty, setIsFormDirty] = useState(false);
   const [birthdayNumber, setBirthdayNumber] = useState(null);
 
-  // const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date('1920/01/01'));
+  const [endDate, setEndDate] = useState(new Date());
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -203,20 +204,29 @@ const UserForm = () => {
             >
               Birthday
             </Label>
+
             <StyledDataPicker
               name="birthday"
-              showIcon
+              // showIcon
               closeOnSelect={true}
-              // selected={values.birthday || user.birthday}
               onChange={handleDatePickerChange}
               selected={birthdayNumber}
-              // onChange={date => setBirthdayNumber(date)}
               placeholderText={currentDate}
-              // startDate={}
-              // views={['year', 'month', 'day']}
               dateFormat="yyyy/MM/dd"
-              isTouched={touched.birthday}
-              hasError={errors.birthday}
+              maxDate={endDate}
+              minDate={startDate}
+              customInput={
+                <Input
+                  id="birthday"
+                  name="birthday"
+                  placeholder={currentDate}
+                  value={values.birthday || ''}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  style={{ width: '100%' }}
+                  // className={errors.name && touched.name ? 'InvalidInput' : ''}
+                />
+              }
             />
           </WrapperInput>
           {/*  email */}
