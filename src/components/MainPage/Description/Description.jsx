@@ -7,7 +7,7 @@ export const Description = () => {
             <li>
                 <MainPageTextConteiner>
                     <span>1.</span>
-                    <h2><span>Calendar</span><br/>viev</h2>
+                    <h2><span>Calendar</span><br/>view</h2>
                     <p>
                         GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.
                     </p>
