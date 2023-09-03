@@ -9,6 +9,7 @@ import GlobalStyle from '../globalStyles';
 import { Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
+import Loader from '../components/Loader/Loader';
 
 const Login = lazy(() => import('../pages/Login'));
 const RegisterPage = lazy(() => import('../pages/Registration'));
