@@ -1,12 +1,12 @@
-// import Statistics from '../components/StatisticsPage/StatisticsPage';
+import Statistics from '../components/Statistics/Statistics';
 
 const StatisticsPage = () => {
-    return (
-      <div>
-        {/* <StatisticsPage /> */}
-        <p>Statistics</p>
-      </div>
-    );
-  };
-  
-  export default StatisticsPage;
+  return (
+    <div>
+      <p>Statistics</p>
+      <Statistics />
+    </div>
+  );
+};
+
+export default StatisticsPage;

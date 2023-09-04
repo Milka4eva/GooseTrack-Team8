@@ -9,7 +9,6 @@ export const getTasksOfMonth = createAsyncThunk(
   async (date, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
-
     if (token === null) {
       return thunkAPI.rejectWithValue('Error authorization');
     }
@@ -18,9 +17,10 @@ export const getTasksOfMonth = createAsyncThunk(
 
     try {
       const { data } = await axios.get(
-        `/tasks/query?month=${date.month}&year=${date.year}`
-      );
 
+        `/tasks/query?month=${date.month + 1}&year=${date.year}`
+
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
