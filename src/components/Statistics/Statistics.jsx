@@ -107,7 +107,6 @@ function Statistics() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, startDate]);
   useEffect(() => {
-    console.log(startDate, tasks);
     percentageMonthCounting(tasks);
   }, [tasks]);
   return (
