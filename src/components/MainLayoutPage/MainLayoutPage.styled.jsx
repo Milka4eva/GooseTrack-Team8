@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  background: #f7f6f9;
+  background: ${({ theme }) => theme.bgColors.mainLayout};
   height: 100vh;
   @media (min-width: 1440px) {
   }
@@ -45,4 +45,3 @@ export const SideBarContainer = styled.div`
     display: block;
   }
 `;
-
