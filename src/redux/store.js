@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/auth-slice';
 import { calendarReducer } from './calendar/calendar.slice';
+import { reviewsReducer } from './review/reviews-slice';
 import {
   persistStore,
   persistReducer,
@@ -25,6 +26,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     calendar: calendarReducer,
     theme: themeReducer,
+    reviews: reviewsReducer
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

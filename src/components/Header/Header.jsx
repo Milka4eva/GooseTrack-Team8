@@ -20,9 +20,14 @@ import {
 import { useMediaQuery } from '@chakra-ui/react';
 import Icon from '../../images/icons.svg';
 
+import useToggle from 'hooks/useToggle';
+import { FeedBackModal } from 'components/Feedback/FeedBack-modal';
+  
 const Header = props => {
   const [defaultThema, setDeafultThema] = useState(true);
   const [isHidenMenu] = useMediaQuery('(min-width: 1440px)');
+
+  const { isOpen, open, close } = useToggle();  //feedback
 
   const handleChangeThema = () => {
     setDeafultThema(prev => !prev);
@@ -79,9 +84,11 @@ const Header = props => {
       )}
 
       <UserBlockContainer>
-        <ButtonFeedback onClick={() => console.log('open feedback modal')}>
-          Feedback
-        </ButtonFeedback>
+         <ButtonFeedback onClick={open}>
+            Feedback
+          </ButtonFeedback>
+      
+             {isOpen && <FeedBackModal handleClose={close} />}
         <ButtonChangeThema onClick={handleChangeThema}>
           <IconChangeThema>
             {defaultThema ? (
