@@ -66,6 +66,7 @@ export const SpanInputEmail = styled.span`
 
   @media (min-width: 768px) {
     font-size: 14px;
+    margin-top: 18px;
   }
 `;
 export const SpanInputPass = styled.span`
@@ -206,12 +207,13 @@ export const ButtonSubmit = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:11px;
+  gap: 11px;
+  cursor: pointer;
   &:hover {
     background: #2b78ef;
   }
   @media (min-width: 768px) {
-    width: 400px;
+    width: 100%;
     height: 56px;
     margin-top: 48px;
     font-size: 18px;
@@ -255,6 +257,7 @@ export const ButtonSignup = styled.button`
   background: #dcebf7;
   margin-right: auto;
   margin-left: auto;
+  cursor: pointer;
   &:hover {
     color: #2b78ef;
   }

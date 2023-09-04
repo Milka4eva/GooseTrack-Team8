@@ -10,26 +10,27 @@ const StyledLink = styled(NavLink)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 
   width: 76px;
   height: 34px;
 
-  background: var(--button-period-type);
+  background: ${({ theme }) => theme.dayMonthSwicher.bgColor};
 
-  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29px;
 
-  color: var(--color-button-period-type);
+  color: ${({ theme }) => theme.dayMonthSwicher.textColor};
 
   &.active {
-    background: var(--active-button-period-type);
-    color: var(--accent-text-color);
+    background: ${({ theme }) => theme.dayMonthSwicher.activeBgColor};
+    color: ${({ theme }) => theme.dayMonthSwicher.activeTextColor};
     &:hover,
     :focus {
-      background-color: var(--active-button-period-type);
+      background-color: ${({ theme }) => theme.notChangedcolors.hoverBtnColor};
+      color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
       box-shadow: none;
     }
   }
@@ -45,21 +46,23 @@ export const StyledLinkMonth = styled(StyledLink)`
   padding: 8px 16px;
 
   border: none;
-  border-right: var(--border-calendar-period-type);
+  border-right: ${({ theme }) => theme.dayMonthSwicher.borderColor};
   border-radius: 8px 0px 0px 8px;
 
-  transition: background-color var(--animation), box-shadow var(--animation);
+  transition: background-color ${({ theme }) => theme.animation},
+    box-shadow ${({ theme }) => theme.animation};
 
   &:hover,
   :focus {
-    background-color: var(--hover-button-period-type);
+    background-color: ${({ theme }) => theme.notChangedcolors.hoverBtnColor};
+    color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
     box-shadow: -4px 2px 16px rgba(136, 165, 191, 1);
   }
 `;
 
 export const LinkActiveMonth = styled(StyledLinkMonth)`
-  background: var(--active-button-period-type);
-  color: var(--accent-text-color);
+  background: ${({ theme }) => theme.dayMonthSwicher.activeBgColor};
+  color: ${({ theme }) => theme.dayMonthSwicher.activeTextColor};
 `;
 
 export const StyledLinkDay = styled(StyledLink)`
@@ -67,11 +70,13 @@ export const StyledLinkDay = styled(StyledLink)`
   border: none;
   border-radius: 0px 8px 8px 0px;
 
-  transition: background-color var(--animation), box-shadow var(--animation);
+  transition: background-color ${({ theme }) => theme.animation},
+    box-shadow ${({ theme }) => theme.animation};
 
   &:hover,
   :focus {
-    background-color: var(--hover-button-period-type);
+    background-color: ${({ theme }) => theme.notChangedcolors.hoverBtnColor};
+    color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
   }
   @media (min-width: 768px) {
@@ -80,6 +85,6 @@ export const StyledLinkDay = styled(StyledLink)`
 `;
 
 export const LinkActiveDay = styled(StyledLinkDay)`
-  background: var(--active-button-period-type);
-  color: var(--accent-text-color);
+  background: ${({ theme }) => theme.dayMonthSwicher.activeBgColor};
+  color: ${({ theme }) => theme.dayMonthSwicher.activeTextColor};
 `;

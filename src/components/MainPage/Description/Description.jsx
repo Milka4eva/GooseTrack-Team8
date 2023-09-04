@@ -7,15 +7,15 @@ export const Description = () => {
             <li>
                 <MainPageTextConteiner>
                     <span>1.</span>
-                    <h2><span>Calendar</span><br/>viev</h2>
+                    <h2><span>Calendar</span><br/>view</h2>
                     <p>
                         GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.
                     </p>
                 </MainPageTextConteiner>
                 <MainPageImgConteiner>
                     <picture>
-                        <source srcset={`${Img001Webp} 1x, ${Img001Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img001Jpg} 1x, ${Img001Jpg} 2x`} type="image/jpeg" />
+                        <source srcSet={`${Img001Webp} 1x, ${Img001Webp2x} 2x`} type="image/webp" />
+                        <source srcSet={`${Img001Jpg} 1x, ${Img001Jpg2x} 2x`} type="image/jpeg" />
                         <MainPageIMG src={Img001Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
@@ -31,8 +31,8 @@ export const Description = () => {
 
                 <MainPageImgConteiner>
                     <picture>
-                        <source srcset={`${Img002Webp} 1x, ${Img002Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img002Jpg} 1x, ${Img002Jpg} 2x`} type="image/jpeg" />
+                        <source srcSet={`${Img002Webp} 1x, ${Img002Webp2x} 2x`} type="image/webp" />
+                        <source srcSet={`${Img002Jpg} 1x, ${Img002Jpg2x} 2x`} type="image/jpeg" />
                         <MainPageIMG src={Img002Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
@@ -47,9 +47,9 @@ export const Description = () => {
                 </MainPageTextConteiner>
                 <MainPageImgConteiner>
                     <picture>
-                        <source srcset={`${Img001Webp} 1x, ${Img001Webp2x} 2x`} type="image/webp" />
-                        <source srcset={`${Img001Jpg} 1x, ${Img001Jpg} 2x`} type="image/jpeg" />
-                        <MainPageIMG src={Img001Jpg} alt="Calendar" loading="lazy"/>
+                        <source srcSet={`${Img003Webp} 1x, ${Img003Webp2x} 2x`} type="image/webp" />
+                        <source srcSet={`${Img003Jpg} 1x, ${Img003Jpg2x} 2x`} type="image/jpeg" />
+                        <MainPageIMG src={Img003Jpg} alt="Calendar" loading="lazy"/>
                     </picture>
                 </MainPageImgConteiner>
             </li>
