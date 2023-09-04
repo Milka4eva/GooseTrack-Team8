@@ -22,7 +22,7 @@ export const MonthWrapper = styled.div`
   height: 30px;
   padding: 8px 12px;
 
-  background-color: var(--accent-btn-background);
+  background-color: ${({ theme }) => theme.notChangedcolors.accentColor};
   border-radius: 8px;
   @media (min-width: 768px) {
     height: 34px;
@@ -33,7 +33,6 @@ export const MonthName = styled.p`
   min-width: 94px;
   height: 18px;
 
-  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -42,7 +41,7 @@ export const MonthName = styled.p`
   text-align: center;
   text-transform: uppercase;
 
-  color: var(--btn-text-color);
+  color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
   @media (min-width: 768px) {
     min-width: 107px;
 
@@ -60,12 +59,12 @@ const StyledLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   isolation: isolate;
+  border: 1px solid ${({ theme }) => theme.borderColors.calendar};
 
   width: 36px;
   height: 30px;
 
-  background: var(--primary-background-color);
-  border: var(--border-calendar);
+  background: ${({ theme }) => theme.bgColors.page};
   opacity: ${props => {
     if (props.disabled) {
       return '0.3';
@@ -82,15 +81,13 @@ const StyledLink = styled(NavLink)`
   @media (min-width: 768px) {
     width: 38px;
     height: 34px;
-
-    border: var(--border);
   }
 `;
 
 export const ButtonLeft = styled(StyledLink)`
   border-radius: 8px 0px 0px 8px;
-
-  transition: box-shadow var(--animation);
+  border-right: none;
+  transition: box-shadow ${({ theme }) => theme.animation};
   &:hover {
     box-shadow: -4px 2px 10px rgba(136, 165, 191, 1);
   }
@@ -98,7 +95,7 @@ export const ButtonLeft = styled(StyledLink)`
 export const ButtonRight = styled(StyledLink)`
   border-radius: 0px 8px 8px 0px;
 
-  transition: box-shadow var(--animation);
+  transition: box-shadow ${({ theme }) => theme.animation};
   &:hover {
     box-shadow: 4px 2px 10px rgba(136, 165, 191, 1);
   }
@@ -106,7 +103,7 @@ export const ButtonRight = styled(StyledLink)`
 export const Icon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: var(--secondary-text-color);
+  stroke: ${({ theme }) => theme.textColors.modalText};
   fill: transparent;
   @media (min-width: 768px) {
     width: 18px;

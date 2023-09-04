@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   HeaderContainer,
   ButtonFeedback,
@@ -19,13 +17,22 @@ import {
 } from './Header.styled';
 import { useMediaQuery } from '@chakra-ui/react';
 import Icon from '../../images/icons.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from 'redux/theme/theme-slice';
+import { selectTheme } from 'redux/theme/theme-selectors';
 
+import useToggle from 'hooks/useToggle';
+import { FeedBackModal } from 'components/Feedback/FeedBack-modal';
+  
 const Header = props => {
-  const [defaultThema, setDeafultThema] = useState(true);
+  const themeName = useSelector(selectTheme);
+  const dispatch = useDispatch();
   const [isHidenMenu] = useMediaQuery('(min-width: 1440px)');
 
+  const { isOpen, open, close } = useToggle();  //feedback
+
   const handleChangeThema = () => {
-    setDeafultThema(prev => !prev);
+    dispatch(toggleTheme());
   };
 
   const namePageTitle = () => {
@@ -76,12 +83,14 @@ const Header = props => {
       )}
 
       <UserBlockContainer>
-        <ButtonFeedback onClick={() => console.log('open feedback modal')}>
-          Feedback
-        </ButtonFeedback>
+         <ButtonFeedback onClick={open}>
+            Feedback
+          </ButtonFeedback>
+      
+             {isOpen && <FeedBackModal handleClose={close} />}
         <ButtonChangeThema onClick={handleChangeThema}>
           <IconChangeThema>
-            {defaultThema ? (
+            {themeName === 'dark' ? (
               <use href={Icon + '#icon-moon'} />
             ) : (
               <use href={Icon + '#icon-sun'} />

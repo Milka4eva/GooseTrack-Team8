@@ -15,16 +15,13 @@ export default function CalendarPage() {
   const currentDate = useSelector(selectCurrentMonth);
 
   useEffect(() => {
-    if (currentDate) {
-      dispatch(
-        getTasksOfMonth({
-          month: format(new Date(currentDate), 'M'),
-          year: format(new Date(currentDate), 'yyyy'),
-        })
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentDate]);
+    dispatch(
+      getTasksOfMonth({
+        month: format(new Date(currentDate), 'M'),
+        year: format(new Date(currentDate), 'yyyy'),
+      })
+    );
+  }, [currentDate, dispatch]);
 
   return (
     <Container>

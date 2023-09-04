@@ -79,7 +79,7 @@ export const PeriodPaginator = ({ currentIndex, choosedDay }) => {
   };
 
   return (
-    <STC.Wrapper index={currentIndex}>
+    <STC.Wrapper>
       <STC.MonthWrapper>
         {currentIndex !== null ? (
           <STC.MonthName>
