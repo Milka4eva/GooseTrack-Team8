@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   background: #f7f6f9;
-  height: 100vh;
+  height: 844px;
+  @media (min-width: 768px) {
+    height: 1024px;
+  }
   @media (min-width: 1440px) {
+    height: 900px;
   }
 `;
 export const SuBContainer = styled.div`
@@ -25,12 +29,16 @@ export const SuBContainer = styled.div`
 `;
 export const HeaderContainer = styled.div`
   padding-top: 24px;
-
+  // margin-bottom: 40px;
+  @media (min-width: 768px) {
+    // margin-bottom: 38px;
+  }
   @media (min-width: 1440px) {
     width: 1151px;
     height: 100%;
-    margin: 0 32px;
+    margin-left: 32px;
     padding-top: 41px;
+    // margin-bottom: 32px;
   }
 `;
 export const SideBarContainer = styled.div`
@@ -45,4 +53,3 @@ export const SideBarContainer = styled.div`
     display: block;
   }
 `;
-

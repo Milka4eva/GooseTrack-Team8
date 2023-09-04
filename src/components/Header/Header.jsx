@@ -34,16 +34,13 @@ const Header = props => {
         return 'Statistics';
 
       case '/account':
-        return 'Account';
-
-      case '/calendar':
-        return 'Calendar';
+        return 'User Profile';
 
       default:
-        break;
+        return 'Calendar';
     }
   };
-
+  
   const defUser = require('../../images/defUser.jpg');
   const { name, avatarUrl } = props.userInfo;
   return (

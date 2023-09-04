@@ -1,7 +1,11 @@
 import { Formik, Form, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
-import { register } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import { useMediaQuery } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   MainContainer,
@@ -25,11 +29,12 @@ import {
   IconButtonSubmitSpan,
   SubContainer,
 } from './RegistrationForm.styled';
-import { useMediaQuery } from '@chakra-ui/react';
 import Icon from '../../images/icons.svg';
-import { useNavigate } from 'react-router-dom';
+import { register } from '../../redux/auth/auth-operations';
+import useAuth from 'hooks/useAuth';
+
 const userShema = object({
-  name: string().required(),
+  name: string().min(3).required(),
   email: string().email('This is an ERROR email').required(),
   password: string().min(6).max(16).required(),
 });
@@ -41,10 +46,16 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
-const [isHidenGus] = useMediaQuery('(min-width: 1440px)');
+  const [isHidenGus] = useMediaQuery('(min-width: 1440px)');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { userErr } = useAuth();
 
+  useEffect(() => {
+    if (userErr) {
+      toast.error('Not valid email or password');
+    }
+  }, [userErr]);
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(register(values));
@@ -200,7 +211,9 @@ const [isHidenGus] = useMediaQuery('(min-width: 1440px)');
         </FormContainer>
 
         <SignupContainer>
-          <ButtonSignup type="button" onClick={() => navigate('/login')}>Log In</ButtonSignup>
+          <ButtonSignup type="button" onClick={() => navigate('/login')}>
+            Log In
+          </ButtonSignup>
         </SignupContainer>
       </SubContainer>
       {isHidenGus && (
@@ -213,6 +226,18 @@ const [isHidenGus] = useMediaQuery('(min-width: 1440px)');
           />
         </GusContainer>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
     </MainContainer>
   );
 };
