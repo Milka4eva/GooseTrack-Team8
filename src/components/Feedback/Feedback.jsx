@@ -22,7 +22,7 @@ import closeIcon from '../../images/Icons/close-menu-button.svg'
 import icons from '../../images/sprite.svg'
 import { useEffect, useState } from 'react';
 
-import { createOwnerReview, deleteReviewOwn, updateOwnerReview } from 'redux/review/reviews-operations';
+import { createOwnerReview, deleteReviewOwn, updateOwnerReview } from 'redux/review/reviews-operations'; //here we also use 'getAllReviews' if needed//
 import { useDispatch } from 'react-redux';
 
 
