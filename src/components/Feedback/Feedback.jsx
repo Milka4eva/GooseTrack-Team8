@@ -18,7 +18,7 @@ import {
   Pensil,
   Trash,
 } from './Feedback.styled';
-import closeIcon from '../../images/Icons/close-menu-button.svg'
+import closeIcon from '../../images/sideBar.svg';
 import icons from '../../images/sprite.svg'
 import { useEffect, useState } from 'react';
 
@@ -112,8 +112,8 @@ export const FeedbackForm = ({ ownRating, ownComment, handleClose }) => {
       >
           {props =>(
                <FeedbackFormContainer>
-            <IconClose onClick={handleClose} >
-              <use href={closeIcon + '#close-menu-button'} />
+            <IconClose onClick={handleClose} stroke="#111" >
+              <use href={closeIcon + '#close-menu'} />
         </IconClose>
 				  <Form onSubmit={handleSubmit}>
           
