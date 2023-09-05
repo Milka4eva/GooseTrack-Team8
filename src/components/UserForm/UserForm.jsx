@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 import moment from 'moment/moment';
 import { validationSchema } from './ValidationSchema';
 import Icon from '../../images/icons.svg';
+import 'react-datepicker/dist/react-datepicker.css';
+import './custom-datepicker-userForm.css';
 
 import {
   Container,
@@ -28,7 +30,6 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  // const user = useSelector(state => state.auth.user);
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
@@ -215,6 +216,7 @@ const UserForm = () => {
               dateFormat="yyyy/MM/dd"
               maxDate={endDate}
               minDate={startDate}
+              className="custom-datepicker-userForm"
               customInput={
                 <Input
                   id="birthday"
@@ -224,7 +226,6 @@ const UserForm = () => {
                   onChange={handleInputChange}
                   onBlur={handleBlur}
                   style={{ width: '100%' }}
-                  // className={errors.name && touched.name ? 'InvalidInput' : ''}
                 />
               }
             />
