@@ -43,6 +43,7 @@ export const lightTheme = {
     textColor: '#3E85F3',
     activeBgColor: '#3E85F333',
     activeTextColor: '#3E85F3',
+    borderColor: 'rgba(62, 133, 243, 0.20)',
   },
   feedbackCancelBtn: {
     bgColor: '#E5EDFA',
@@ -51,6 +52,7 @@ export const lightTheme = {
   boxShadows: {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
   },
+  animation: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 };
 
 export const darkTheme = {
@@ -70,7 +72,7 @@ export const darkTheme = {
   bgColors: {
     sideBar: '#13151A',
     mainLayout: '#171820',
-    page: '#21222C',
+    page: '#FFFFFF26',
     modalBg: '#171820',
     modalInputBg: '#171820',
     acviveNavLink: '#3E85F3',
@@ -97,6 +99,7 @@ export const darkTheme = {
     textColor: '#3E85F3',
     activeBgColor: '#3E85F3',
     activeTextColor: '#FFFFFF',
+    borderColor: 'rgba(255, 255, 255, 0.15)',
   },
   feedbackCancelBtn: {
     bgColor: '#21222C',

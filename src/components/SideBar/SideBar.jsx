@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '@chakra-ui/react';
 
 import {
   SideBarContainer,
@@ -16,78 +16,91 @@ import {
   NavigationItem,
   LogOutBtn,
   LogOutBtnTitle,
+  SideBarWrapper,
+  SvgNav,
+  LogOutBtnSvg,
+  CloseBtnSvg,
 } from './SideBar.styled';
 import logo from '../../images/Icons/goose-logo-m.png';
-import closeIcon from '../../images/Icons/close-menu-button.svg';
-import calendarCheckIcon from '../../images/Icons/calendar-check-black.svg';
-import userCheckIcon from '../../images/Icons/user-check-black.svg';
-import statisticsIcon from '../../images/Icons/statistics.svg';
 import logoutIcon from '../../images/Icons/log-out-button.svg';
-import { Suspense } from 'react';
+import icon from '../../images/sideBar.svg';
+import { useDispatch } from 'react-redux';
+import { logout } from 'redux/auth/auth-operations';
 
-const SideBar = () => {
-  const navigate = useNavigate();
+const SideBar = props => {
+  const dispatch = useDispatch();
+  const [isHidenCloseButton] = useMediaQuery('(min-width: 1440px)');
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
 
   return (
     <>
       <SideBarContainer>
-        <SideBarHeaderWrapper>
-          <SideBarLogoWrapper>
-            <SideBarLogo src={logo} width="36" alt="Goose logo" />
-            <SideBarTitle>
-              G<SideBarTitleSpan>oo</SideBarTitleSpan>seTrack
-            </SideBarTitle>
-            <SideBarCloseBtn>
-              <svg width={24} height={24} alt={'close menu'}>
-                <use href={closeIcon + '#close-menu-button'}></use>
-              </svg>
-            </SideBarCloseBtn>
-          </SideBarLogoWrapper>
-        </SideBarHeaderWrapper>
+        <SideBarWrapper>
+          <SideBarHeaderWrapper>
+            <SideBarLogoWrapper>
+              <SideBarLogo src={logo} alt="Goose logo" />
+              <SideBarTitle>
+                G<SideBarTitleSpan>oo</SideBarTitleSpan>seTrack
+              </SideBarTitle>
+              {!isHidenCloseButton && (
+                <SideBarCloseBtn onClick={() => props.sideStatus(false)}>
+                  <CloseBtnSvg >
+                    <use href={icon + '#close-menu'}></use>
+                  </CloseBtnSvg>
+                </SideBarCloseBtn>
+              )}
+            </SideBarLogoWrapper>
+          </SideBarHeaderWrapper>
+          <NavigationWraper>
+            <NavigationTitle>User Panel</NavigationTitle>
+            <ul>
+              <NavigationItem>
+                <NavigationButtonLink to="account">
+                  <NavigationButton>
+                    <SvgNav alt={'user'}>
+                      <use href={icon + '#user'}></use>
+                    </SvgNav>
 
-        <NavigationWraper>
-          <NavigationTitle>User Panel</NavigationTitle>
-          <ul>
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'user'}>
-                  <use href={userCheckIcon + '#user-check-black'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>My account</NavigationButtonTitle>
+                    <NavigationButtonTitle>My account</NavigationButtonTitle>
+                  </NavigationButton>
                 </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
+              </NavigationItem>
 
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'calendar'}>
-                  <use href={calendarCheckIcon + '#calendar-check-black'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>Calendar</NavigationButtonTitle>
+              <NavigationItem>
+                <NavigationButtonLink to="calendar">
+                  <NavigationButton>
+                    <SvgNav>
+                      <use href={icon + '#calendar'}></use>
+                    </SvgNav>
+
+                    <NavigationButtonTitle>Calendar</NavigationButtonTitle>
+                  </NavigationButton>
                 </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
+              </NavigationItem>
 
-            <NavigationItem>
-              <NavigationButton>
-                <svg width={24} height={24} alt={'statistics'}>
-                  <use href={statisticsIcon + '#statistics'}></use>
-                </svg>
-                <NavigationButtonLink href={'#'}>
-                  <NavigationButtonTitle>Statistics</NavigationButtonTitle>
+              <NavigationItem>
+                <NavigationButtonLink to="statistics">
+                  <NavigationButton>
+                    <SvgNav>
+                      <use href={icon + '#statistics'}></use>
+                    </SvgNav>
+
+                    <NavigationButtonTitle>Statistics</NavigationButtonTitle>
+                  </NavigationButton>
                 </NavigationButtonLink>
-              </NavigationButton>
-            </NavigationItem>
-          </ul>
-        </NavigationWraper>
+              </NavigationItem>
+            </ul>
+          </NavigationWraper>
+        </SideBarWrapper>
 
-        <LogOutBtn onClick={() => navigate('login')}>
+        <LogOutBtn onClick={handleLogOut}>
           <LogOutBtnTitle>Log out</LogOutBtnTitle>
-          <svg width={20} height={20} alt={'logout'}>
+          <LogOutBtnSvg>
             <use href={logoutIcon + '#logout'}></use>
-          </svg>
+          </LogOutBtnSvg>
         </LogOutBtn>
       </SideBarContainer>
     </>

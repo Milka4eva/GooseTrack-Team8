@@ -7,8 +7,8 @@ export const AuthSection = () => {
     return <>
         <MainPageConteiner>
             <picture>
-                <source srcset={GooseWebp} type="image/webp" />
-                <source srcset={Goose} type="image/png" />
+                <source srcSet={GooseWebp} type="image/webp" />
+                <source srcSet={Goose} type="image/png" />
                 <MainPageGoose src={Goose} alt="Goose" loading="lazy"/>
             </picture>
 

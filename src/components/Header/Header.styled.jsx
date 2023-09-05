@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  margin-top: 24px;
-  margin-left: auto;
-  margin-right: auto;
   height: 32px;
   max-width: 335px;
   background: #f7f6f9;
@@ -15,8 +12,9 @@ export const HeaderContainer = styled.div`
     height: 44px;
   }
   @media (min-width: 1440px) {
-    max-width: 1087px;
-    margin-bottom: 38px;
+    max-width: 100%;
+    margin-bottom: 33px;
+    // padding:0 32px;
   }
 `;
 export const NamePageContainer = styled.div`
@@ -58,6 +56,7 @@ export const MenuButton = styled.button`
   padding: 0;
   border: none;
   background: inherit;
+  cursor: pointer;
 `;
 export const MenuButtonIcon = styled.svg`
   width: 24px;
@@ -84,6 +83,7 @@ export const ButtonFeedback = styled.button`
   font-weight: 600;
   line-height: 16px;
   margin-right: 18px;
+  cursor: pointer;
   &:hover {
     background: #2b78ef;
   }
@@ -102,6 +102,7 @@ export const ButtonChangeThema = styled.button`
   background: inherit;
   border: none;
   padding: 0;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 32px;
     height: 32px;
