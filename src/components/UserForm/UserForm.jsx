@@ -35,8 +35,8 @@ const UserForm = () => {
   const [isFormDirty, setIsFormDirty] = useState(false);
   const [birthdayNumber, setBirthdayNumber] = useState(null);
 
-  const [startDate, setStartDate] = useState(new Date('1920/01/01'));
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate] = useState(new Date('1920/01/01'));
+  const [endDate] = useState(new Date());
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
