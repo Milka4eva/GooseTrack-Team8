@@ -1,14 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  background: #f7f6f9;
-  height: 844px;
-  @media (min-width: 768px) {
-    height: 1024px;
-  }
-  @media (min-width: 1440px) {
-    height: 900px;
-  }
+  background: ${({ theme }) => theme.bgColors.mainLayout}
 `;
 export const SuBContainer = styled.div`
   // outline: 1px solid red;
