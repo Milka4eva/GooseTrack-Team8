@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
      position: relative;   
     margin: 40px 28px;  
@@ -7,9 +8,7 @@ export const Container = styled.div`
     font-size:12px;
     font-weight: 600;
     line-height: 14px;  
-    @media (min-width: 380px){
-        flex-wrap: wrap; 
-    }
+   
 `
 export const TaskInput = styled.input`
      width: 95%;
@@ -21,6 +20,28 @@ export const TaskInput = styled.input`
     background-color: #f7f7f7; 
     border-radius: 8px;
 `
+
+export const Errors = styled.p`
+  margin-top: 4px;
+  margin-bottom: 2px;
+  color: red;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  `
+ export const None = styled.p`
+ margin-top: 4px;
+ margin-bottom: 2px;
+ color: transparent;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 12px;
+ line-height: 1.17;
+ `
+ 
 export const TimeInput = styled.input`
      width: 90px;
      padding: 14px;
@@ -47,11 +68,10 @@ export const RadioName = styled.span`
   line-height: 1.17;
   color: #343434;
   cursor: pointer;
-  @media (min-width: 768px) {
-    font-size: 14px;
-    
-  }
+ 
+  
 `
+
 export const Text = styled.p`
   color: rgba(52, 52, 52, 0.8);
 margin:0;
@@ -63,11 +83,15 @@ export const StartWrapper = styled.div`
 export const RadioGroup = styled.div`
   display: flex;
   flex-direction: row;
-
   justify-content: flex-start;
-  margin-top: 28px;
+  margin-top: 21px;
   gap: 16px;
   padding-bottom: 20px;
+  @media (max-width: 375px){
+    margin-top: 5px;
+    padding-bottom: 15px;
+  }
+  
 `
 
 export const RadioButton = styled.input`
@@ -122,7 +146,6 @@ export const CancelBtn = styled.button`
     padding: 16px;
     width: 100%;
     cursor: pointer;
-
     border: 2px solid white;
     background: white;
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
@@ -135,13 +158,16 @@ export const CancelBtn = styled.button`
     line-height: 18px;
     letter-spacing: -0.02em;
     color:black;
-
     cursor: pointer; 
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  :focus {
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 1)};
 `
 
 export const Flex = styled.div`
    display: flex;    
-    margin-top: 18px; 
+    margin-top: 7px; 
 `
 
 
@@ -166,8 +192,9 @@ export const AddBtn = styled.button`
     line-height: 18px;
     letter-spacing: -0.02em;
     color: white;
-
-    cursor: pointer; 
+    cursor: pointer;
+    
+    
 `
 export const Plus = styled.span`
   margin-right: 10px;
