@@ -10,15 +10,8 @@ export const StyledDataPicker = styled(DatePicker)`
   font-size: 14px;
   font-weight: 600;
 
-  // mobile  width: 300px; pad 28px
-  // width: 354px; pad 36px
-  /* width: 100%; */
   max-width: 375px;
-  // width: 100%;
-  width: 303px;
   height: 34px;
-
-  /* min-width: 250px; */
 
   padding-left: 14px;
   padding-right: 14px;
@@ -53,48 +46,7 @@ export const StyledDataPicker = styled(DatePicker)`
   @media (min-width: 768px) {
     width: 318px;
     height: 36px;
-    // height: 46px;
   }
-
-  //   /* input {
-  //     padding-left: 0px;
-  //     color: #111111;
-  //   } */
-
-  //   input::placeholder {
-  //     font-family: 'Inter';
-  //     font-size: 14px;
-  //     color: white;
-  //     font-weight: 600;
-  //     opacity: 1;
-  //   }
-
-  /* .react-datepicker__input-container {
-    position: relative;
-    font-family: 'Inter';
-    font-size: 14px;
-    font-weight: 600;
-
-  
-  } */
-
-  //   .react-datepicker-wrapper {
-  //     min-width: 250px;
-  //     height: 44px;
-  //     padding-left: 14px;
-  //     padding-right: 14px;
-  //     outline: none;
-  //     border: none;
-  //     border-radius: 8px;
-  //   }
-
-  .react-datepicker__input-container input {
-    border: 1px solid rgba(17, 17, 17, 0.1);
-  }
-
-  //   .react-datepicker__input-container input:focus {
-  //     border: 1px solid #111111;
-  //   }
 `;
 
 export const Container = styled.div`
@@ -340,6 +292,7 @@ export const Input = styled.input`
   }
 
   @media (min-width: 768px) {
+    font-size: 16px;
     height: 46px;
   }
 `;
