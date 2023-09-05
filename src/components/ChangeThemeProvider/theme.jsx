@@ -31,7 +31,9 @@ export const lightTheme = {
     navLink: '#34343480',
     acviveNavLink: '#3E85F3',
     modalText: '#343434',
+    calendarDate: '#343434',
     modalLabel: '#343434CC',
+    textSecondary: '#616161',
   },
   borderColors: {
     userInput: '#11111126',
