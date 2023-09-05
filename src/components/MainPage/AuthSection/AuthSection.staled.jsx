@@ -114,7 +114,7 @@ export const MainPageSingUp = styled(Link)`
     }
 
     &:hover, :focus {
-        text-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
+        text-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     }
 
 `
@@ -165,6 +165,6 @@ export const MainPageLogIn = styled(Link)`
     }
 
     &:hover, :focus {
-        box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
+        box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     }
 `

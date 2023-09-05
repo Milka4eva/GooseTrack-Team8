@@ -89,7 +89,7 @@ export const ReviewButtonConteiner = styled.div`
         transition: filter 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover, :focus {
-            filter: drop-shadow(4px 2px 16px rgba(136, 165, 191, 1)); 
+            filter: drop-shadow(4px 2px 16px rgba(136, 165, 191, 0.48)); 
         }
     }
 
