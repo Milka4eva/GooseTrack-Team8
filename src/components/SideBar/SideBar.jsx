@@ -19,13 +19,11 @@ import {
   SideBarWrapper,
   SvgNav,
   LogOutBtnSvg,
+  CloseBtnSvg,
 } from './SideBar.styled';
 import logo from '../../images/Icons/goose-logo-m.png';
-import closeIcon from '../../images/Icons/close-menu-button.svg';
-import calendarCheckIcon from '../../images/Icons/calendar-check-black.svg';
-import userCheckIcon from '../../images/Icons/user-check-black.svg';
-import statisticsIcon from '../../images/Icons/statistics.svg';
 import logoutIcon from '../../images/Icons/log-out-button.svg';
+import icon from '../../images/sideBar.svg';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 
@@ -49,9 +47,9 @@ const SideBar = props => {
               </SideBarTitle>
               {!isHidenCloseButton && (
                 <SideBarCloseBtn onClick={() => props.sideStatus(false)}>
-                  <svg width={24} height={24} alt={'close menu'}>
-                    <use href={closeIcon + '#close-menu-button'}></use>
-                  </svg>
+                  <CloseBtnSvg >
+                    <use href={icon + '#close-menu'}></use>
+                  </CloseBtnSvg>
                 </SideBarCloseBtn>
               )}
             </SideBarLogoWrapper>
@@ -63,7 +61,7 @@ const SideBar = props => {
                 <NavigationButtonLink to="account">
                   <NavigationButton>
                     <SvgNav alt={'user'}>
-                      <use href={userCheckIcon + '#user-check-black'}></use>
+                      <use href={icon + '#user'}></use>
                     </SvgNav>
 
                     <NavigationButtonTitle>My account</NavigationButtonTitle>
@@ -74,10 +72,8 @@ const SideBar = props => {
               <NavigationItem>
                 <NavigationButtonLink to="calendar">
                   <NavigationButton>
-                    <SvgNav alt={'calendar'}>
-                      <use
-                        href={calendarCheckIcon + '#calendar-check-black'}
-                      ></use>
+                    <SvgNav>
+                      <use href={icon + '#calendar'}></use>
                     </SvgNav>
 
                     <NavigationButtonTitle>Calendar</NavigationButtonTitle>
@@ -88,8 +84,8 @@ const SideBar = props => {
               <NavigationItem>
                 <NavigationButtonLink to="statistics">
                   <NavigationButton>
-                    <SvgNav alt={'statistics'}>
-                      <use href={statisticsIcon + '#statistics'}></use>
+                    <SvgNav>
+                      <use href={icon + '#statistics'}></use>
                     </SvgNav>
 
                     <NavigationButtonTitle>Statistics</NavigationButtonTitle>
@@ -102,7 +98,7 @@ const SideBar = props => {
 
         <LogOutBtn onClick={handleLogOut}>
           <LogOutBtnTitle>Log out</LogOutBtnTitle>
-          <LogOutBtnSvg alt={'logout'}>
+          <LogOutBtnSvg>
             <use href={logoutIcon + '#logout'}></use>
           </LogOutBtnSvg>
         </LogOutBtn>

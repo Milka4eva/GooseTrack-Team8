@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 import moment from 'moment/moment';
 import { validationSchema } from './ValidationSchema';
 import Icon from '../../images/icons.svg';
+import 'react-datepicker/dist/react-datepicker.css';
+import './custom-datepicker-userForm.css';
 
 import {
   Container,
@@ -28,13 +30,13 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  // const user = useSelector(state => state.auth.user);
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
   const [birthdayNumber, setBirthdayNumber] = useState(null);
 
-  // const [startDate, setStartDate] = useState(new Date());
+  const [startDate] = useState(new Date('1920/01/01'));
+  const [endDate] = useState(new Date());
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -203,20 +205,29 @@ const UserForm = () => {
             >
               Birthday
             </Label>
+
             <StyledDataPicker
               name="birthday"
-              showIcon
+              // showIcon
               closeOnSelect={true}
-              // selected={values.birthday || user.birthday}
               onChange={handleDatePickerChange}
               selected={birthdayNumber}
-              // onChange={date => setBirthdayNumber(date)}
               placeholderText={currentDate}
-              // startDate={}
-              // views={['year', 'month', 'day']}
               dateFormat="yyyy/MM/dd"
-              isTouched={touched.birthday}
-              hasError={errors.birthday}
+              maxDate={endDate}
+              minDate={startDate}
+              className="custom-datepicker-userForm"
+              customInput={
+                <Input
+                  id="birthday"
+                  name="birthday"
+                  placeholder={currentDate}
+                  value={values.birthday || ''}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  style={{ width: '100%' }}
+                />
+              }
             />
           </WrapperInput>
           {/*  email */}

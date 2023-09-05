@@ -1,18 +1,21 @@
 import styled from 'styled-components';
-import {  Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 export const SideBarContainer = styled.div`
   max-width: 225px;
   padding: 24px 20px;
   background-color: #fff;
-  height: 100vh;
+  height: 812px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   @media (min-width: 768px) {
     max-width: 289px;
     padding: 32px 24px;
+    height: 1024px;
+  }
+  @media (min-width: 1440px) {
+    height: 900px;
   }
 `;
 
@@ -68,14 +71,21 @@ export const SideBarCloseBtn = styled.button`
   justify-content: center;
   padding: 0;
 `;
-
-export const NavigationWraper = styled.div`
+export const CloseBtnSvg = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: #343434;
+  @media (min-width: 768px) {
+    width: 34px;
+    height: 34px;
+  }
 `;
+export const NavigationWraper = styled.div``;
 
 export const NavigationItem = styled.li`
   margin-bottom: 18px;
- @media (min-width: 768px) {
-     margin-bottom: 16px;
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
   }
 `;
 
@@ -88,8 +98,7 @@ export const NavigationButton = styled.button`
   height: 40px;
   cursor: pointer;
   width: 100%;
-  &:hover,
-  &:active {
+  &:hover {
     background-color: #e3f3ff;
   }
   @media (min-width: 768px) {
@@ -113,8 +122,12 @@ export const NavigationTitle = styled.p`
 export const SvgNav = styled.svg`
   width: 20px;
   height: 20px;
+  stroke: rgba(52, 52, 52, 0.5);
+  fill: rgba(52, 52, 52, 0.5);
+
   ${NavigationButton}:hover & {
-    fill: #3e85f3;
+    stroke: rgba(62, 133, 243, 1);
+    fill: rgba(62, 133, 243, 1);
   }
   @media (min-width: 768px) {
     width: 24px;
@@ -147,6 +160,9 @@ export const LogOutBtn = styled.button`
   background-color: #3e85f3;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   cursor: pointer;
+  &:hover {
+    background: #2b78ef;
+  }
   @media (min-width: 768px) {
     width: 141px;
     height: 56px;

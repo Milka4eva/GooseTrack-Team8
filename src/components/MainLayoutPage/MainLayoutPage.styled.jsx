@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  background: ${({ theme }) => theme.bgColors.mainLayout};
+  background: ${({ theme }) => theme.bgColors.mainLayout}
 `;
 export const SuBContainer = styled.div`
   // outline: 1px solid red;
@@ -22,12 +22,16 @@ export const SuBContainer = styled.div`
 `;
 export const HeaderContainer = styled.div`
   padding-top: 24px;
-
+  // margin-bottom: 40px;
+  @media (min-width: 768px) {
+    // margin-bottom: 38px;
+  }
   @media (min-width: 1440px) {
     width: 1151px;
     height: 100%;
-    margin: 0 32px;
+    margin-left: 32px;
     padding-top: 41px;
+    // margin-bottom: 32px;
   }
 `;
 export const SideBarContainer = styled.div`
