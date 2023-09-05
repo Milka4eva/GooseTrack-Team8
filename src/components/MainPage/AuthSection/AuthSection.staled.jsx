@@ -105,9 +105,16 @@ export const MainPageSingUp = styled(Link)`
     text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04), 0px 47px 355px rgba(0, 0, 0, 0.07);
     color: #FFF;
 
+    cursor: pointer;
+    transition: text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     @media (min-width: 768px) {
         font-size: 14px;
         line-height: 1.3;
+    }
+
+    &:hover, :focus {
+        text-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     }
 
 `
@@ -135,6 +142,9 @@ export const MainPageLogIn = styled(Link)`
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
     text-decoration: none;
 
+    cursor: pointer;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     @media (min-width: 768px) {
         width: 120px;
         height: 50px;
@@ -145,12 +155,16 @@ export const MainPageLogIn = styled(Link)`
         width: 18px;
         height: 18px;
 
-        color: currentColor;
+        color: #3E85F3;
 
         & use {
             display: block;
             width: 100%;
             height: 100%;
         }
+    }
+
+    &:hover, :focus {
+        box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     }
 `
