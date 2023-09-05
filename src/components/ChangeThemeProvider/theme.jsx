@@ -55,6 +55,26 @@ export const lightTheme = {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
   },
   animation: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  userProfile: {
+    bgColor: '#FFFFFF',
+    textColors: '#FFFFFF',
+    userName: '#343434;',
+    title: '#343434;',
+    label: '#111',
+    labelHasError: '#E74A3B',
+    labelHasOk: '#3cbc81',
+    inputBorder: '1px solid rgba(17, 17, 17, 0.10)',
+    inputHasError: '1px solid #E74A3B',
+    inputHasOk: '1px solid #3cbc81',
+    inputPlaceholderColor: 'rgba(17, 17, 17, 0.15)',
+    inputText: '#111',
+
+    hoverBtnColor: '#2B78EF',
+    colorTextDisabledBtn: 'rgb(255, 255, 255)',
+    colorTextNotDisabledBtn: '#FFFFFF',
+    backgroundColorDisabledBtn: 'rgb(234, 234, 234)',
+    backgroundColorNotDisabledBtn: '#3E85F3',
+  },
 };
 
 export const darkTheme = {
@@ -109,5 +129,26 @@ export const darkTheme = {
   },
   boxShadows: {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
+  },
+  userProfile: {
+    bgColor: '#21222C',
+    textColors: '#343434',
+    userName: '#FFFFFF',
+    title: 'rgba(250, 250, 250, 0.3)',
+    label: 'rgba(250, 250, 250, 0.3)',
+    labelHasError: '#E74A3B',
+    labelHasOk: '#3cbc81',
+    inputBorder: '1px solid rgba(255, 255, 255, 0.15)',
+    inputHasError: '1px solid #E74A3B',
+    inputHasOk: '1px solid #3cbc81',
+    inputPlaceholderColor: 'rgba(250, 250, 250, 0.3)',
+    inputText: '#FFFFFF',
+
+    textBtnColor: '#FFFFFF',
+    hoverBtnColor: '#2B78EF',
+    colorTextDisabledBtn: '#21222C',
+    colorTextNotDisabledBtn: '#FFFFFF',
+    backgroundColorDisabledBtn: 'rgba(250, 250, 250, 0.1)',
+    backgroundColorNotDisabledBtn: '#3E85F3',
   },
 };
