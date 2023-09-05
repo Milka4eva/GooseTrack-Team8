@@ -35,7 +35,7 @@ export const lightTheme = {
   },
   borderColors: {
     userInput: '#11111126',
-    calendar: 'rgba(220, 227, 229, 0.80)',
+    calendar: 'rgba(220, 227, 229, 0.50)',
     addTask: '#3E85F3',
   },
   dayMonthSwicher: {

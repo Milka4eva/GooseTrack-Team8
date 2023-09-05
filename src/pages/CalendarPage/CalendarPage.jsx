@@ -1,18 +1,17 @@
-import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { Container } from './CalendarPage.styled';
-import { Outlet } from 'react-router';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentMonth } from 'redux/calendar/calendar.selectors';
+import { useDispatch } from 'react-redux';
 import { getTasksOfMonth } from 'redux/calendar/calendar.operations';
-import { format } from 'date-fns';
+import { format, formatISO } from 'date-fns';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { MonthCalendarHead } from './MonthCalendarHead';
-import { CalendarTable } from './CalendarTable';
+import CalendarMonthView from './CalendarMonthView';
+import CalendarDayView from './CalendarDayView';
 
 export default function CalendarPage() {
   const dispatch = useDispatch();
-  const currentDate = useSelector(selectCurrentMonth);
+  const currentDate = formatISO(new Date(), {
+    representation: 'date',
+  });
 
   useEffect(() => {
     dispatch(
@@ -25,22 +24,10 @@ export default function CalendarPage() {
 
   return (
     <Container>
-      <CalendarToolbar />
-      <Outlet />
-
       <Routes>
         <Route index element={<Navigate to={`month/${currentDate}`} />} />
-        <Route
-          path="month/:currentDate"
-          element={
-            <>
-              <MonthCalendarHead />
-              <CalendarTable />
-            </>
-          }
-        />
-
-        <Route path="day/:currentDate" element={<div>Day </div>} />
+        <Route path="month/:currentDate" Component={CalendarMonthView} />
+        <Route path="day/:currentDate" Component={CalendarDayView} />
       </Routes>
     </Container>
   );
