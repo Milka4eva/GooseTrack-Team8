@@ -193,7 +193,11 @@ export const AddBtn = styled.button`
     letter-spacing: -0.02em;
     color: white;
     cursor: pointer;
-    
+
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  :focus {
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 1)};
     
 `
 export const Plus = styled.span`
