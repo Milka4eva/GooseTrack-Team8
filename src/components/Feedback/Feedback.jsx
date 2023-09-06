@@ -132,7 +132,7 @@ export const FeedbackForm = ({ ownRating, ownComment, handleClose }) => {
             onMouseEnter={() => setHover(index)}
                 onMouseLeave={() => setHover(rating)}
           >
-            <span className="star">&#9733;</span>
+             <use  href={icons + '#icon-Star-feedback'} />   
           </ButtonStar>
         );
       })}
