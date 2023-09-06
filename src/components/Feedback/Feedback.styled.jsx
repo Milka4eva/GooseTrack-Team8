@@ -19,7 +19,7 @@ width: 335px;
   z-index: 10;
 box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
 
-  background-color: #FFF;
+  background-color:  ${({ theme }) => theme.bgColors.modalBg};
    padding: 28px 20px; 
 
   @media screen and (min-width: 768px) {
@@ -35,7 +35,7 @@ left: 45%;
 
 export const Form = styled(FormikForm)`
   gap: 5px;
-  background-color:#FFFFFF;
+  background-color: ${({ theme }) => theme.bgColors.modalBg};
   @media screen and (min-width: 768px) {
     width: 404px;
   }
@@ -43,12 +43,12 @@ export const Form = styled(FormikForm)`
 `;
 
 export const Title = styled.p`
- color: rgba(52, 52, 52, 0.80);
+ color:  ${({ theme }) => theme.textColors.modalLabel};
 font-family: Inter;
 font-size: 12px;
 font-style: normal;
 font-weight: 500;
-line-height: 14px; 
+line-height: 1,1; 
 margin-top:26px;
 
 `;
@@ -57,6 +57,7 @@ export const IconClose = styled.svg`
     left: 97%;
 width:24px;
 height: 24px;
+stroke: ${({ theme }) => theme.feedbackCancelBtn.textColor};
 `;
 export const FormField = styled.label`
   margin-bottom: 0;
@@ -70,11 +71,11 @@ export const TextareaField = styled(FormikField)`
   width: 100%;
   height: 130px;
   padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid ${({ theme }) => theme.borderColors.calendar};
 margin-top:8px;
-  background: #F6F6F6;
+  background:  ${({ theme }) => theme.bgColors.modalInputBg};
   border-radius: 8px;
-  color: #343434;
+  color: ${({ theme }) => theme.textColors.modalText};
 font-family: Inter;
 font-size: 14px;
 font-style: normal;
@@ -138,9 +139,7 @@ color: #343434;
   cursor: pointer;
   &:hover,
   &:focus {
-   background: #3E85F3;
-      color: #FFF;
-       box-shadow:  #3E85F3;
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
 
@@ -156,16 +155,15 @@ font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: 18px;
-  color: #343434;
-  background: #E5EDFA;
+  color:${({ theme }) => theme.feedbackCancelBtn.textColor};
+  background:  ${({ theme }) => theme.feedbackCancelBtn.bgColor};
  border: none;
   border-radius: 8px;
   cursor: pointer;
   &:hover,
   &:focus {
-    background:  #3E85F3;
-color: #FFF;
-  box-shadow:  #3E85F3;
+   
+ box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
 
@@ -192,8 +190,7 @@ line-height: 18px;
   cursor: pointer;
   &:hover,
   &:focus {
-   background: #E5EDFA;
-    color: #343434;
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
 
@@ -205,16 +202,21 @@ export const EditButtonContainer = styled.div`
   align-items: baseline;
 `;
 
-export const ButtonStar = styled.button`
+export const ButtonStar = styled.svg`
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+  margin-top: 8px;
+  width: 24px;
+  height: 24px;
   &.on {
-  color: #FFAC33;
+  stroke: #FFAC33;
+  fill:   #FFAC33;
 }
 &.off {
-  color: #CEC9C1;
+  stroke: #CEC9C1;
+  fill: #CEC9C1;
 }
 }`;
 export const ButtonDiv = styled.div`
@@ -254,7 +256,7 @@ export const Trash = styled.svg`
   cursor: pointer;
   &:hover,
   &:focus {
-    background: #ea3d65;
+    background: ${({ theme }) => theme.notChangedcolors.highPriorColor};
       stroke: #FFF;
   }
 `;

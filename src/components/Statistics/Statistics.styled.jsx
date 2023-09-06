@@ -2,11 +2,25 @@ import styled from 'styled-components';
 
 export const StatisticsWrapper = styled.div`
   padding: 28px 14px;
+  background-color: ${({ theme }) => theme.bgColors.page};
+  border-radius: 16px;
+  @media (min-width: 768px) {
+    padding: 100px 50px;
+  }
+  @media (min-width: 1440px) {
+    padding: 120px 140px;
+  }
 `;
 export const MonthSelectionSection = styled.div`
   display: flex;
   margin-bottom: 20px;
   justify-content: space-between;
+`;
+export const MonthAndLegendWrapper = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 export const LegendSection = styled.div`
   display: flex;
@@ -19,8 +33,15 @@ export const LegendParagraph = styled.p`
   letter-spacing: 0em;
   text-align: left;
   margin-right: 8px;
+  @media (min-width: 1440px) {
+    font-size: 16px;
+  }
 `;
-export const ButtonsWrapper = styled.div``;
+export const ButtonsWrapper = styled.div`
+  @media (min-width: 768px) {
+    margin-left: 8px;
+  }
+`;
 export const NextDayBtn = styled.button`
   background-color: #ffffff;
   border: 1px solid #dce3e580;
@@ -124,6 +145,16 @@ export const StatsFooter = styled.div`
   position: absolute;
   bottom: 34px;
   left: 45px;
+  @media (min-width: 768px) {
+    padding-left: 80px;
+    padding-right: 80px;
+    gap: 112px;
+  }
+  @media (min-width: 1440px) {
+    padding-left: 160px;
+    padding-right: 160px;
+    gap: 136px;
+  }
 `;
 export const StatsFooterRow = styled.div``;
 export const StatsFooterRowText = styled.p`
@@ -142,7 +173,6 @@ export const RowPercentageWrapper = styled.div`
   align-items: flex-end;
   justify-content: center;
   margin-bottom: 20px;
-  gap: 4px;
   left: 0px;
   bottom: 31px;
 `;
@@ -156,6 +186,9 @@ export const RowPercentageDay = styled.div`
     rgba(255, 210, 221, 1),
     rgba(255, 210, 221, 0)
   );
+  @media (min-width: 768px) {
+    width: 27px;
+  }
 `;
 export const RowPercentageMonth = styled.div`
   width: 22px;
@@ -167,17 +200,44 @@ export const RowPercentageMonth = styled.div`
     rgba(62, 133, 243, 1),
     rgba(62, 133, 243, 0)
   );
+  @media (min-width: 768px) {
+    width: 27px;
+  }
+  @media (min-width: 1440px) {
+  }
 `;
 export const PercentageValue = styled.div`
   position: absolute;
-  margin-left: 2px;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
-`;
+  bottom: 280px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
 
+  @media (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+`;
+export const PercentageHolder = styled.div`
+  height: 246px;
+  width: 4px;
+  @media (min-width: 768px) {
+    width: 8px;
+  }
+  @media (min-width: 1440px) {
+    width: 10px;
+  }
+`;
 // aima25@mail.com
 // Aimaaima25.

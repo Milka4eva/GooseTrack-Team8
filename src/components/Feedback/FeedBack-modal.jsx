@@ -5,6 +5,7 @@ import { selectReviewOwn } from "redux/review/reviews-selector"
 import { FeedbackForm } from "./Feedback"
 
 
+
 export const FeedBackModal = ({handleClose}) => {
     const [ownRating, setRating] = useState(null)
     const [ownComment, setComment] = useState('')
@@ -15,11 +16,27 @@ export const FeedBackModal = ({handleClose}) => {
         dispatch(getOwnerReview())
         setRating(ownReview.rating)
         setComment(ownReview.comment)
-    }, [dispatch, ownReview.rating, ownReview.comment ])
+    }, [dispatch, ownReview.rating, ownReview.comment])
     
+      useEffect(() => {
+    const handleEscPress = e => {
+      if (e.code === 'Escape') {
+        handleClose();
+      }
+    };
+    window.addEventListener('keydown', handleEscPress);
+    return () => {
+      window.removeEventListener('keydown', handleEscPress);
+    };
+  }, [handleClose]);
+    
+    
+
     return (
         <>
-            <FeedbackForm ownComment={ownComment} ownRating={ownRating} handleClose={handleClose}/>
+          
+                <FeedbackForm ownComment={ownComment} ownRating={ownRating} handleClose={handleClose} />
+         
         </>
     )
 }
