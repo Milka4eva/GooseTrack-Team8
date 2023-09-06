@@ -290,7 +290,7 @@ const UserForm = () => {
               id="phone"
               type="tel"
               name="phone"
-              placeholder=" 38 (097)..."
+              placeholder="38 (097) 256 34 77"
               inputMode="numeric"
               value={values.phone || ''}
               onChange={handlePhoneNumberChange}
