@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/useAuth';
 import { updateUserInfo } from 'redux/auth/auth-operations';
 import { useFormik } from 'formik';
-import moment from 'moment/moment';
+// import moment from 'moment/moment';
+import moment from 'moment';
 import { validationSchema } from './ValidationSchema';
 import Icon from '../../images/icons.svg';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -51,7 +52,8 @@ const UserForm = () => {
 
   const handleDatePickerChange = date => {
     if (!date) setFieldValue('birthday', '');
-    const formattedDate = moment(date.$d).format('YYYY/MM/DD');
+    // const formattedDate = moment(date.$d).format('YYYY/MM/DD');
+    const formattedDate = moment(date).format('YYYY/MM/DD');
     setBirthdayNumber(date);
     setFieldValue('birthday', formattedDate);
     setIsFormDirty(true);
@@ -92,7 +94,10 @@ const UserForm = () => {
     setIsFormDirty(true);
   };
 
-  const currentDate = moment().format('YYYY/MM/DD');
+  // const currentDate = moment().format('YYYY/MM/DD');
+  const currentDate = user.birthday
+    ? moment(user.birthday).format('YYYY/MM/DD')
+    : moment().format('YYYY/MM/DD');
 
   const {
     errors,
@@ -128,7 +133,10 @@ const UserForm = () => {
     setFieldValue('email', user.email);
     setFieldValue('phone', user.phone);
     setFieldValue('skype', user.skype);
-    setFieldValue('birthday', user.birthday);
+    // setFieldValue('birthday', user.birthday);
+    if (user.birthday) {
+      setFieldValue('birthday', moment(user.birthday).format('YYYY/MM/DD'));
+    }
 
     setSelectedImage(null || user.avatarUrl);
     setBirthdayNumber(user.birthday);
