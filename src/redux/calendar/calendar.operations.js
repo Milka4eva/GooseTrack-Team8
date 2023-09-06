@@ -17,9 +17,7 @@ export const getTasksOfMonth = createAsyncThunk(
 
     try {
       const { data } = await axios.get(
-
-        `/tasks/query?month=${date.month + 1}&year=${date.year}`
-
+        `/tasks/query?month=${+date.month + 1}&year=${date.year}`
       );
       return data;
     } catch (error) {
