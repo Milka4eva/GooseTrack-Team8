@@ -1,14 +1,15 @@
 import { Bars } from 'react-loader-spinner';
-import { LoaderWrapper } from './Loader.styled';
 import { useTheme } from 'styled-components';
+import { LoaderWrapper } from './Loader.styled';
 
 const Loader = () => {
   const theme = useTheme();
+
   return (
     <LoaderWrapper>
       <Bars
-        height="80"
-        width="80"
+        height="70"
+        width="70"
         color={theme.notChangedcolors.accentColor}
         ariaLabel="bars-loading"
         visible

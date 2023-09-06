@@ -12,6 +12,11 @@ export const lightTheme = {
       bgColor: '#EFEFEF',
       textColor: '#111111',
     },
+    calendarTodosBG: {
+      lowColor: '#CEEEFD',
+      mediumColor: '#FCF0D4',
+      highColor: '#FFD2DD',
+    },
   },
   bgColors: {
     sideBar: '#FFFFFF',
@@ -55,6 +60,11 @@ export const lightTheme = {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
   },
   animation: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  scrollBarColors: {
+    barBgColor: '#f2f2f2',
+    thumbBgColor: '#e7e5e5',
+    thumbHoverColor: '#cacaca',
+  },
   userProfile: {
     bgColor: '#FFFFFF',
     textColors: '#FFFFFF',
@@ -89,6 +99,11 @@ export const darkTheme = {
     addTaskCancelBtn: {
       bgColor: '#EFEFEF',
       textColor: '#111111',
+    },
+    calendarTodosBG: {
+      lowColor: '#CEEEFD',
+      mediumColor: '#FCF0D4',
+      highColor: '#FFD2DD',
     },
   },
   bgColors: {
@@ -129,6 +144,12 @@ export const darkTheme = {
   },
   boxShadows: {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
+  },
+  animation: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  scrollBarColors: {
+    barBgColor: '#2D3037',
+    thumbBgColor: '#171820',
+    thumbHoverColor: '#616161',
   },
   userProfile: {
     bgColor: '#21222C',

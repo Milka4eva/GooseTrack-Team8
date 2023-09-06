@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
 import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from './theme';
 import { selectTheme } from 'redux/theme/theme-selectors';
 
 const ChangeThemeProvider = ({ children }) => {
