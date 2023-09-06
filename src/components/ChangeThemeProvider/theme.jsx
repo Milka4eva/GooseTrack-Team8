@@ -67,6 +67,8 @@ export const lightTheme = {
   feedbackCancelBtn: {
     bgColor: '#E5EDFA',
     textColor: '#343434',
+    bgColorBtnPenc: '#E3F3FF',
+    bgColorBtnTrash: 'rgba(234, 61, 101, 0.20)',
   },
   boxShadows: {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
@@ -164,6 +166,8 @@ export const darkTheme = {
   feedbackCancelBtn: {
     bgColor: '#21222C',
     textColor: '#FFFFFF',
+    bgColorBtnPenc: '#353647',
+    bgColorBtnTrash: 'rgba(234, 61, 101, 0.20);',
   },
   boxShadows: {
     btnShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48);',
