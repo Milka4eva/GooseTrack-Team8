@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getOwnerReview } from "redux/review/reviews-operations"
 import { selectReviewOwn } from "redux/review/reviews-selector"
 import { FeedbackForm } from "./Feedback"
+import { Overlay } from "./FeedBack-modal.styled"
+
 
 
 
@@ -31,12 +33,17 @@ export const FeedBackModal = ({handleClose}) => {
   }, [handleClose]);
     
     
-
+  const onCloseOverlay = useCallback(
+    e => {
+      if (e.target === e.currentTarget) {
+        handleClose()
+      }
+    },
+    [handleClose]
+)
     return (
-        <>
-          
-                <FeedbackForm ownComment={ownComment} ownRating={ownRating} handleClose={handleClose} />
-         
-        </>
+        <Overlay onClick={onCloseOverlay}>
+           <FeedbackForm ownComment={ownComment} ownRating={ownRating} handleClose={handleClose} />
+        </Overlay>
     )
 }

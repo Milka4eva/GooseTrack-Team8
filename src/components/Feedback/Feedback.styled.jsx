@@ -132,8 +132,8 @@ font-weight: 600;
 line-height: 18px;
   letter-spacing: -0.02em;
   line-height: 1.33;
-  background: #E5EDFA;
-color: #343434;
+  background:${({ theme }) => theme.notChangedcolors.accentColor};
+color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -234,7 +234,7 @@ export const Pensil = styled.svg`
   padding: 5px;
   border-radius: 50%;
   stroke: #3E85F3;
-  background: #DCEBF7;
+  background:  ${({ theme }) => theme.feedbackCancelBtn.bgColorBtnPenc};
   cursor: pointer;
   &:hover,
   &:focus {
@@ -251,7 +251,7 @@ export const Trash = styled.svg`
   height: 30px;
   padding: 5px;
   border-radius: 50%;
-  background: #FFD2DD;
+  background:  ${({ theme }) => theme.feedbackCancelBtn.bgColorBtnTrash};
   stroke: #EA3D65;
   cursor: pointer;
   &:hover,
