@@ -15,7 +15,6 @@ const handelRejected = state => {
   state.isLoggedIn = false;
   state.isRefreshing = false;
   state.error = true;
-  state.token = null;
 };
 
 const initialState = {
@@ -68,7 +67,12 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
       })
-      .addCase(fetchCurrentUser.rejected, handelRejected)
+      .addCase(fetchCurrentUser.rejected, state => {
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+        state.error = true;
+        state.token = null;
+      })
 
       // Update user info
       .addCase(updateUserInfo.pending, handelPending)
@@ -77,7 +81,9 @@ const authSlice = createSlice({
         state.user = { ...state.user, ...action.payload.updatedUser };
         state.isLoggedIn = true;
       })
-      .addCase(updateUserInfo.rejected, handelRejected)
+      .addCase(updateUserInfo.rejected, state => {
+        state.error = true;
+      })
 
       // Log out
       .addCase(logout.fulfilled, state => {

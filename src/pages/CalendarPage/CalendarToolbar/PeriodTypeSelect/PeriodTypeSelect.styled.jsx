@@ -21,19 +21,18 @@ export const TypeSelectBtn = styled.button`
   line-height: 1.29px;
 
   color: ${({ theme }) => theme.dayMonthSwicher.textColor};
+  &:hover,
+  :focus {
+    background-color: ${({ theme }) => theme.notChangedcolors.hoverBtnColor};
+    color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
+    box-shadow: none;
+  }
 
   ${({ $isActive }) =>
     $isActive &&
     css`
       background: ${({ theme }) => theme.dayMonthSwicher.activeBgColor};
       color: ${({ theme }) => theme.dayMonthSwicher.activeTextColor};
-      &:hover,
-      :focus {
-        background-color: ${({ theme }) =>
-          theme.notChangedcolors.hoverBtnColor};
-        color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
-        box-shadow: none;
-      }
     `}
 
   @media (min-width: 768px) {
