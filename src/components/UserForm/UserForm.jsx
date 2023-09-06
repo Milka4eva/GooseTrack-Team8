@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/useAuth';
 import { updateUserInfo } from 'redux/auth/auth-operations';
 import { useFormik } from 'formik';
-import moment from 'moment/moment';
+// import moment from 'moment/moment';
+import moment from 'moment';
 import { validationSchema } from './ValidationSchema';
 import Icon from '../../images/icons.svg';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -33,7 +34,8 @@ const UserForm = () => {
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
-  const [birthdayNumber, setBirthdayNumber] = useState(null);
+  // const [birthdayNumber, setBirthdayNumber] = useState(null);
+  const [, setBirthdayNumber] = useState(null);
 
   const [startDate] = useState(new Date('1920/01/01'));
   const [endDate] = useState(new Date());
@@ -51,7 +53,11 @@ const UserForm = () => {
 
   const handleDatePickerChange = date => {
     if (!date) setFieldValue('birthday', '');
-    const formattedDate = moment(date.$d).format('YYYY/MM/DD');
+
+    // const formattedDate = moment(date.$d).format('YYYY/MM/DD');
+    // const formattedDate = moment(date).format('YYYY/MM/DD');
+    const formattedDate = date.toISOString();
+    // console.log(formattedDate);
     setBirthdayNumber(date);
     setFieldValue('birthday', formattedDate);
     setIsFormDirty(true);
@@ -93,6 +99,9 @@ const UserForm = () => {
   };
 
   const currentDate = moment().format('YYYY/MM/DD');
+  // const currentDate = user.birthday
+  //   ? moment(user.birthday).format('YYYY/MM/DD')
+  //   : moment().format('YYYY/MM/DD');
 
   const {
     errors,
@@ -129,6 +138,9 @@ const UserForm = () => {
     setFieldValue('phone', user.phone);
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
+    // if (user.birthday) {
+    //   setFieldValue('birthday', moment(user.birthday).format('YYYY/MM/DD'));
+    // }
 
     setSelectedImage(null || user.avatarUrl);
     setBirthdayNumber(user.birthday);
@@ -211,7 +223,8 @@ const UserForm = () => {
               // showIcon
               closeOnSelect={true}
               onChange={handleDatePickerChange}
-              selected={birthdayNumber}
+              // selected={birthdayNumber}
+              selected={new Date()}
               placeholderText={currentDate}
               dateFormat="yyyy/MM/dd"
               maxDate={endDate}
@@ -277,7 +290,7 @@ const UserForm = () => {
               id="phone"
               type="tel"
               name="phone"
-              placeholder=" 38 (097)..."
+              placeholder="38 (097) 256 34 77"
               inputMode="numeric"
               value={values.phone || ''}
               onChange={handlePhoneNumberChange}
