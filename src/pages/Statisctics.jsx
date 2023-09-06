@@ -1,10 +1,10 @@
 import Statistics from '../components/Statistics/Statistics';
-
+import { StatisticPage } from 'components/Statistics/Statistics.styled';
 const StatisticsPage = () => {
   return (
-    <div>
+    <StatisticPage>
       <Statistics />
-    </div>
+    </StatisticPage>
   );
 };
 
