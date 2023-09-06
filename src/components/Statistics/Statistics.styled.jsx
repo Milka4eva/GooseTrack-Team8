@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-
+export const StatisticPage = styled.div`
+  height: 100vh;
+`;
 export const StatisticsWrapper = styled.div`
   padding: 28px 14px;
-  background-color: ${({ theme }) => theme.bgColors.page};
+  background-color: ${({ theme }) => theme.userProfile.bgColor};
   border-radius: 16px;
   @media (min-width: 768px) {
     padding: 100px 50px;
@@ -33,6 +35,7 @@ export const LegendParagraph = styled.p`
   letter-spacing: 0em;
   text-align: left;
   margin-right: 8px;
+  color: ${({ theme }) => theme.textColors.main};
   @media (min-width: 1440px) {
     font-size: 16px;
   }
@@ -43,8 +46,9 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 export const NextDayBtn = styled.button`
-  background-color: #ffffff;
-  border: 1px solid #dce3e580;
+  background-color: ${({ theme }) => theme.userProfile.bgColor};
+  border: 1px solid ${({ theme }) => theme.borderColors.calendar};
+  cursor: pointer;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   height: 30px;
@@ -52,8 +56,9 @@ export const NextDayBtn = styled.button`
   position: relative;
 `;
 export const PrevDayBtn = styled.button`
-  background-color: #ffffff;
-  border: 1px solid #dce3e580;
+  background-color: ${({ theme }) => theme.userProfile.bgColor};
+  border: 1px solid ${({ theme }) => theme.borderColors.calendar};
+  cursor: pointer;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   height: 30px;
@@ -65,7 +70,7 @@ export const NextDayBtnIcon = styled.svg`
   padding: 0;
   height: 16px;
   width: 16px;
-  stroke: #343434;
+  stroke: ${({ theme }) => theme.textColors.textSecondary};
   top: 7px;
   left: 10px;
 `;
@@ -74,7 +79,7 @@ export const PrevDayBtnIcon = styled.svg`
   padding: 0;
   height: 16px;
   width: 16px;
-  stroke: #343434;
+  stroke: ${({ theme }) => theme.textColors.textSecondary};
   rotate: -180deg;
   top: 7px;
   left: 10px;
@@ -82,7 +87,7 @@ export const PrevDayBtnIcon = styled.svg`
 export const PinkMarker = styled.span`
   height: 8px;
   width: 8px;
-  background-color: #ffd2dd;
+  background-color: var(--linear-pink-color);
   border-radius: 50%;
   margin-right: 10px;
   display: inline-block;
@@ -90,7 +95,7 @@ export const PinkMarker = styled.span`
 export const BlueMarker = styled.span`
   height: 8px;
   width: 8px;
-  background-color: #3e85f3;
+  background-color: var(--main-blue-color);
   border-radius: 50%;
   margin-right: 8px;
   display: inline-block;
@@ -100,7 +105,7 @@ export const StatsSection = styled.div`
   position: relative;
   margin-top: 20px;
   border-radius: 20px;
-  border: 0.8px solid #e3f3ff;
+  border: 0.8px solid ${({ theme }) => theme.borderColors.statisticBorder};
   padding: 36px 14px 60px;
 `;
 export const TasksHeading = styled.h3`
@@ -110,6 +115,7 @@ export const TasksHeading = styled.h3`
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
+  color: ${({ theme }) => theme.textColors.main};
 `;
 export const StatsTable = styled.div``;
 export const StatsRow = styled.div`
@@ -128,13 +134,14 @@ export const StatsNum = styled.p`
   letter-spacing: 0em;
   text-align: right;
   display: block;
+  color: ${({ theme }) => theme.textColors.main};
 `;
 export const StatsLine = styled.div`
   width: 100%;
   top: 3px;
   height: 1px;
-  border: 1px solid #e3f3ff;
-  color: #e3f3ff;
+  border: 1px solid ${({ theme }) => theme.borderColors.statisticBorder};
+  color: ${({ theme }) => theme.borderColors.statisticBorder};
 `;
 export const StatsFooter = styled.div`
   margin-top: 5px;
@@ -157,7 +164,7 @@ export const StatsFooter = styled.div`
   }
 `;
 export const StatsFooterRow = styled.div``;
-export const StatsFooterRowText = styled.p`
+export const StatsFooterRowText = styled.span`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +174,7 @@ export const StatsFooterRowText = styled.p`
   line-height: 16px;
   letter-spacing: 0em;
   text-align: center;
+  color: ${({ theme }) => theme.textColors.main};
 `;
 export const RowPercentageWrapper = styled.div`
   display: flex;
@@ -214,7 +222,7 @@ export const PercentageValue = styled.div`
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
-  bottom: 280px;
+  bottom: 286px;
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 18px;

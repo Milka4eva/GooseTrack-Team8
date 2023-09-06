@@ -49,13 +49,14 @@ export const lightTheme = {
     textSecondary: '#616161',
     taskText: '#111111',
     sidebarTextButton: 'rgba(52, 52, 52, 0.5)',
-    hoverSidebarTextButton:'#3E85F3',
+    hoverSidebarTextButton: '#3E85F3',
   },
   borderColors: {
     userInput: '#11111126',
     calendar: 'rgba(220, 227, 229, 0.50)',
     addTask: '#3E85F3',
     taskBorder: 'rgba(220, 227, 229, 0.8)',
+    statisticBorder: '#E3F3FF',
   },
   dayMonthSwicher: {
     bgColor: '#E3F3FF',
@@ -134,8 +135,7 @@ export const darkTheme = {
     taskScroll: '#2D3037',
     taskScrollThumb: '#171820',
     sideBarBg: '#13151A',
-        hoverSideBarBg: '#3E85F3',
-
+    hoverSideBarBg: '#3E85F3',
   },
   textColors: {
     main: '#FFFFFF',
@@ -146,15 +146,17 @@ export const darkTheme = {
     acviveNavLink: '#FFFFFF',
     modalText: '#FFFFFF',
     modalLabel: '#FAFAFA4D',
+    textSecondary: '#ffffff',
     taskText: '#FFFFFF',
     sidebarTextButton: '#FFFFFF',
-    hoverSidebarTextButton:'#FFFFFF',
+    hoverSidebarTextButton: '#FFFFFF',
   },
   borderColors: {
     userInput: '#FFFFFF26',
     calendar: 'rgba(255, 255, 255, 0.15)',
     addTask: '#3E85F3',
     taskBorder: 'rgba(255, 255, 255, 0.15)',
+    statisticBorder: '#E3F3FF26',
   },
   dayMonthSwicher: {
     bgColor: '#21222C',
