@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   height: 32px;
   max-width: 335px;
-  background: #f7f6f9;
+  background: ${({ theme }) => theme.bgColors.mainLayout};
   margin-bottom: 64px;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ export const NamePage = styled.h1`
   line-height: 32px;
 `;
 export const NamePageDescription = styled.p`
-  color: #111;
+  color: ${props => props.theme.textColors.main};
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -44,7 +44,7 @@ export const NamePageDescription = styled.p`
   margin-top: 4px;
 `;
 export const NamePageDescriptionSpan = styled.span`
-  color: #3e85f3;
+  color: ${props => props.theme.notChangedcolors.accentColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -61,7 +61,7 @@ export const MenuButton = styled.button`
 export const MenuButtonIcon = styled.svg`
   width: 24px;
   height: 24px;
-  fill: #343434;
+  fill: ${props => props.theme.notChangedcolors.menuIcon};
   @media (min-width: 768px) {
     width: 44px;
     height: 44px;
@@ -77,7 +77,7 @@ export const ButtonFeedback = styled.button`
   border: none;
   border-radius: 10px;
   background: #3e85f3;
-  color: #fff;
+  color: ${props => props.theme.notChangedcolors.textBtnColor};
   text-align: center;
   font-size: 12px;
   font-weight: 600;
@@ -119,7 +119,7 @@ export const IconChangeThema = styled.svg`
 export const UserName = styled.h2`
   display: inline;
   margin: 0 8px;
-  color: #343434;
+  color: ${props => props.theme.textColors.modalText};
 
   font-size: 14px;
   font-weight: 700;
@@ -131,7 +131,7 @@ export const UserName = styled.h2`
 `;
 export const UserFoto = styled.img`
   border-radius: 32px;
-  border: 1.8px solid #3e85f3;
+  border: 1.8px solid ${props => props.theme.notChangedcolors.accentColor};
   width: 30px;
   height: 30px;
   @media (min-width: 768px) {
