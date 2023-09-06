@@ -8,6 +8,8 @@ export const lightTheme = {
     lowPriorColor: '#72C2F8',
     statusError: '#DA1414',
     statusCorrect: '#3CBC81',
+    menuIcon: '#343434',
+    logOutBtnHover: '#2b78ef',
     addTaskCancelBtn: {
       bgColor: '#EFEFEF',
       textColor: '#111111',
@@ -22,6 +24,12 @@ export const lightTheme = {
     acviveNavLink: '#E3F3FF',
     todoCard: '#DCE3E5CC',
     addTask: '#E3F3FF',
+    bgTaskList: '#FFFFFF',
+    bgTask: '#F7F6F9',
+    taskScroll: '#f2f2f2',
+    taskScrollThumb: '#e7e5e5',
+    sideBarBg: '#FFFFFF',
+    hoverSideBarBg: '#E3F3FF',
   },
   textColors: {
     main: '#111111',
@@ -32,11 +40,15 @@ export const lightTheme = {
     acviveNavLink: '#3E85F3',
     modalText: '#343434',
     modalLabel: '#343434CC',
+    taskText: '#111111',
+    sidebarTextButton: 'rgba(52, 52, 52, 0.5)',
+    hoverSidebarTextButton:'#3E85F3',
   },
   borderColors: {
     userInput: '#11111126',
     calendar: 'rgba(220, 227, 229, 0.50)',
     addTask: '#3E85F3',
+    taskBorder: 'rgba(220, 227, 229, 0.8)',
   },
   dayMonthSwicher: {
     bgColor: '#E3F3FF',
@@ -78,6 +90,13 @@ export const darkTheme = {
     acviveNavLink: '#3E85F3',
     todoCard: '#171820',
     addTask: '#3E85F3',
+    bgTaskList: '#21222C',
+    bgTask: '#171820',
+    taskScroll: '#2D3037',
+    taskScrollThumb: '#171820',
+    sideBarBg: '#13151A',
+        hoverSideBarBg: '#3E85F3',
+
   },
   textColors: {
     main: '#FFFFFF',
@@ -88,11 +107,15 @@ export const darkTheme = {
     acviveNavLink: '#FFFFFF',
     modalText: '#FFFFFF',
     modalLabel: '#FAFAFA4D',
+    taskText: '#FFFFFF',
+    sidebarTextButton: '#FFFFFF',
+    hoverSidebarTextButton:'#FFFFFF',
   },
   borderColors: {
     userInput: '#FFFFFF26',
     calendar: 'rgba(255, 255, 255, 0.15)',
     addTask: '#3E85F3',
+    taskBorder: 'rgba(255, 255, 255, 0.15)',
   },
   dayMonthSwicher: {
     bgColor: '#21222C',

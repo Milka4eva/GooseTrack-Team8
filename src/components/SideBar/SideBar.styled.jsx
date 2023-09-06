@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const SideBarContainer = styled.div`
   max-width: 225px;
   padding: 24px 20px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bgColors.sideBar};
   height: 812px;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@ export const SideBarLogo = styled.img`
 export const SideBarTitle = styled.p`
   font-weight: 700;
   font-size: 16px;
-  color: #3e85f3;
+  color: ${({ theme }) => theme.textColors.logo};
   margin-right: 25px;
   margin-left: 6px;
   line-height: 22px;
@@ -74,7 +74,7 @@ export const SideBarCloseBtn = styled.button`
 export const CloseBtnSvg = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: #343434;
+  stroke: ${({ theme }) => theme.notChangedcolors.menuIcon};
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
@@ -94,52 +94,47 @@ export const NavigationButton = styled.button`
   align-items: center;
   border: none;
   border-radius: 8px;
-  background-color: transparent;
+  background: inherit;
   height: 40px;
   cursor: pointer;
   width: 100%;
   &:hover {
-    background-color: #e3f3ff;
+    background: ${({ theme }) => theme.bgColors.hoverSideBarBg};
   }
   @media (min-width: 768px) {
     height: 56px;
   }
 `;
+export const NavigationButtonAcc = styled(NavigationButton)`
+  background: ${props => props.$loca};
+`;
+export const NavigationButtonCalen = styled(NavigationButton)`
+  background: ${props => props.$loca};
+`;
+export const NavigationButtonStat = styled(NavigationButton)`
+  background: ${props => props.$loca};
+`;
 
 export const NavigationTitle = styled.p`
-  color: rgba(52, 52, 52, 0.5);
+  color: ${({ theme }) => theme.textColors.sidebarTextButton};
   font-weight: 600;
   font-size: 12px;
+
   margin-bottom: 24px;
   ${NavigationButton}:hover & {
-    color: #3e85f3;
+    color: ${({ theme }) => theme.textColors.logo};
   }
   @media (min-width: 768px) {
     font-size: 14px;
   }
 `;
-
-export const SvgNav = styled.svg`
-  width: 20px;
-  height: 20px;
-  stroke: rgba(52, 52, 52, 0.5);
-  fill: rgba(52, 52, 52, 0.5);
+export const NavigationButtonTitle = styled.p`
+  color: ${({ theme }) => theme.textColors.sidebarTextButton};
+  font-weight: 600;
 
   ${NavigationButton}:hover & {
-    stroke: rgba(62, 133, 243, 1);
-    fill: rgba(62, 133, 243, 1);
+    color: ${({ theme }) => theme.textColors.logo};
   }
-  @media (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-export const NavigationButtonLink = styled(Link)`
-  text-decoration: none;
-`;
-
-export const NavigationButtonTitle = styled(NavigationTitle)`
   margin-bottom: 0;
   margin-left: 8px;
   font-size: 14px;
@@ -149,6 +144,49 @@ export const NavigationButtonTitle = styled(NavigationTitle)`
   }
 `;
 
+export const NavigationButtonTitleAcc = styled(NavigationButtonTitle)`
+  color: ${props => props.$loca};
+`;
+export const NavigationButtonTitleCalen = styled(NavigationButtonTitle)`
+  color: ${props => props.$loca};
+`;
+export const NavigationButtonTitleStat = styled(NavigationButtonTitle)`
+  color: ${props => props.$loca};
+`;
+export const SvgNav = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: ${({ theme }) => theme.textColors.sidebarTextButton};
+  fill: ${({ theme }) => theme.textColors.sidebarTextButton};
+
+  ${NavigationButton}:hover & {
+    stroke: ${({ theme }) => theme.textColors.logo};
+    fill: ${({ theme }) => theme.textColors.logo};
+  }
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const SvgNavAcc = styled(SvgNav)`
+  stroke: ${props => props.$loca};
+  fill: ${props => props.$loca};
+`;
+export const SvgNavCalen = styled(SvgNav)`
+  stroke: ${props => props.$loca};
+  fill: ${props => props.$loca};
+`;
+export const SvgNavStat = styled(SvgNav)`
+  stroke: ${props => props.$loca};
+  fill: ${props => props.$loca};
+`;
+
+export const NavigationButtonLink = styled(Link)`
+  text-decoration: none;
+`;
+
+
+
 export const LogOutBtn = styled.button`
   display: flex;
   align-items: center;
@@ -157,11 +195,11 @@ export const LogOutBtn = styled.button`
   height: 46px;
   border: none;
   border-radius: 16px;
-  background-color: #3e85f3;
+  background-color: ${({ theme }) => theme.notChangedcolors.accentColor};
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   cursor: pointer;
   &:hover {
-    background: #2b78ef;
+    background: ${({ theme }) => theme.notChangedcolors.logOutBtnHover};
   }
   @media (min-width: 768px) {
     width: 141px;
@@ -170,7 +208,7 @@ export const LogOutBtn = styled.button`
 `;
 
 export const LogOutBtnTitle = styled.p`
-  color: #ffffff;
+  color: ${({ theme }) => theme.notChangedcolors.textBtnColor};
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
