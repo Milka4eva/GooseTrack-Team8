@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
      position: relative;   
     margin: 40px 28px;  
-    background-color: var(--basic-bgd-color);
     font-size:12px;
     font-weight: 600;
     line-height: 14px;  
@@ -15,16 +14,16 @@ export const TaskInput = styled.input`
     padding: 14px;
     padding-left: 8px;
     margin-top: 8px;
-    border: 1px solid #F7F7F7;
-    color: #616161;  
-    background-color: #f7f7f7; 
+    border: 1px solid #F6F6F6;
+    color: ${({ theme }) => theme.textColors.modalText};
+    background-color: #F6F6F6 ;
     border-radius: 8px;
 `
 
 export const Errors = styled.p`
   margin-top: 4px;
   margin-bottom: 2px;
-  color: red;
+  stroke: red;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -48,8 +47,10 @@ export const TimeInput = styled.input`
     padding-left: 8px;
     margin-top: 8px;
     border: 1px solid #F7F7F7;
-    color: #616161;  
-    background-color: #f7f7f7; 
+    color: ${({ theme }) => theme.textColors.modalText}; 
+    background-color: ${({ theme }) => theme.bgColors.modalInputBg};
+ 
+
     border-radius: 8px;
 `
 
@@ -66,7 +67,8 @@ export const RadioName = styled.span`
   font-weight: 600;
   font-size: 12px;
   line-height: 1.17;
-  color: #343434;
+  color: ${({ theme }) => theme.textColors.modalText};
+
   cursor: pointer;
  
   
@@ -99,6 +101,7 @@ export const RadioButton = styled.input`
   position: absolute;
   height: 0;
   width: 0;
+  
 
   &::before {
     content: '';
@@ -147,7 +150,7 @@ export const CancelBtn = styled.button`
     width: 100%;
     cursor: pointer;
     border: 2px solid white;
-    background: white;
+    background: #EFEFEF;
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     border-radius: 8px;
 

@@ -30,7 +30,7 @@ export const ModalWindow = styled.div`
   left: 50%;
   transform: translate(-50%,-50%);    
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.bgColors.modalBg};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   border-radius: 8px;   
  
