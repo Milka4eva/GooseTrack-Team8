@@ -68,29 +68,6 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-// export const updateUserInfo = createAsyncThunk(
-//   'users/edit',
-//   async (credentials, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue();
-//     }
-
-//     token.set(persistedToken);
-
-//     try {
-//       const { data } = await axios.patch('/users/edit', credentials);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-
 export const updateUserInfo = createAsyncThunk(
   'users/edit',
   async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
@@ -117,8 +94,6 @@ export const updateUserInfo = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      // Notify.success(`${data.user.name} profile was updated`);
 
       return data;
     } catch (error) {
