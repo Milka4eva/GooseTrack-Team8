@@ -59,7 +59,8 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: ${({ theme }) => theme.userProfile.bgColor};
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -82,7 +83,8 @@ export const FormContainer = styled.form`
   padding-left: 18px;
   padding-right: 18px;
 
-  background-color: #fff;
+  /* background-color: #fff; // #21222C; */
+  background-color: ${({ theme }) => theme.userProfile.bgColor};
 
   border-radius: 16px;
 
@@ -95,9 +97,9 @@ export const FormContainer = styled.form`
     padding-top: 60px;
     padding-bottom: 60px;
   }
-  .InvalidInput {
+  /* .InvalidInput {
     border: 1px solid #e74a3b;
-  }
+  } */
 
   /* .CorrectInput {
     border: 1px solid #3cbc81;
@@ -184,7 +186,9 @@ export const Heading = styled.div`
   font-family: Inter;
   font-weight: 700;
   font-size: 14px;
-  color: #343434;
+  /* color: #343434; */
+  color: ${({ theme }) => theme.userProfile.userName};
+
   text-align: center;
 `;
 
@@ -194,7 +198,8 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: 12px;
   text-align: center;
-  color: #343434;
+  /* color: #343434; */
+  color: ${({ theme }) => theme.userProfile.title};
 `;
 
 // Обгортка Inputs without avatar
@@ -233,10 +238,15 @@ export const Label = styled.label`
   font-weight: 400;
   margin-bottom: 8px;
   line-height: 1.1;
-  color: #111111;
+  /* color: #111111; */
+  color: ${({ theme }) => theme.userProfile.label};
 
   color: ${props =>
-    !props.isTouched ? '#111)' : props.hasError ? '#e74a3b' : '#3cbc81'};
+    !props.isTouched
+      ? props.theme.userProfile.label
+      : props.hasError
+      ? props.theme.userProfile.labelHasError
+      : props.theme.userProfile.labelHasOk};
 `;
 
 export const Input = styled.input`
@@ -250,24 +260,27 @@ export const Input = styled.input`
   outline: none;
 
   border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
-  color: rgba(17, 17, 17, 0.1)
-    ${props =>
-      props.value &&
-      `
+  /* border: 1px solid rgba(17, 17, 17, 0.10); */
+  border: ${({ theme }) => theme.userProfile.inputBorder};
+
+  /* color: rgba(17, 17, 17, 0.1) */
+  color: ${({ theme }) => theme.userProfile.inputText};
+
+  ${props =>
+    props.value &&
+    `
     font-family: 'Inter';
     font-size: 14px;
     font-weight:600;
-    color: black;
-  
+   
   `};
 
-  border-color: ${props =>
+  border: ${props =>
     !props.isTouched
-      ? 'rgba(17, 17, 17, 0.15)'
+      ? props.theme.userProfile.inputBorder
       : props.hasError
-      ? '#e74a3b'
-      : '#3cbc81'};
+      ? props.theme.userProfile.inputHasError
+      : props.theme.userProfile.inputHasOk};
 
   /* .InvalidInput {
    
@@ -284,7 +297,8 @@ export const Input = styled.input`
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    color: rgba(17, 17, 17, 0.15);
+    /* color: rgba(17, 17, 17, 0.15); */
+    color: ${({ theme }) => theme.userProfile.inputPlaceholderColor};
   }
   &:hover,
   &:focus {
@@ -298,7 +312,8 @@ export const Input = styled.input`
 `;
 
 export const ErrorMessage = styled.div`
-  color: #da1414;
+  /* color: #da1414; */
+  color: ${({ theme }) => theme.notChangedcolors.statusError};
   font-size: 12px;
   margin-top: 3px;
   margin-left: 8px;
@@ -327,18 +342,28 @@ export const Button = styled.button`
 
   text-align: center;
 
-  color: #ffffff;
-  background-color: ${p => (p.disabled ? '#eaeaea' : '#3E85F3')};
+  /* color: #ffffff; */
+  /* background-color: ${p => (p.disabled ? '#eaeaea' : '#3E85F3')}; */
+  background-color: ${p =>
+    p.disabled
+      ? p.theme.userProfile.backgroundColorDisabledBtn
+      : p.theme.userProfile.backgroundColorNotDisabledBtn};
+
+  color: ${p =>
+    p.disabled
+      ? p.theme.userProfile.colorTextDisabledBtn
+      : p.theme.userProfile.colorTextNotDisabledBtn};
 
   border-radius: 16px;
-
   border: none;
 
   cursor: ${p => (p.disabled ? 'default' : 'pointer')};
 
-  &:hover(:not disabled),
-  &:focus(:not disabled) {
-    background-color: #2b78ef;
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    /* color: #ffffff; */
+    color: ${({ theme }) => theme.userProfile.textBtnColor};
+    background-color: ${({ theme }) => theme.userProfile.hoverBtnColor};
   }
 
   @media (min-width: 768px) {

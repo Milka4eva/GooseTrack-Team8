@@ -98,8 +98,6 @@ function Statistics() {
   useEffect(() => {
     const month = startDate.getMonth();
     const year = startDate.getUTCFullYear();
-    console.log(startDate);
-    console.log(month);
     const date = {
       month,
       year,
