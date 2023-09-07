@@ -58,7 +58,7 @@ const taskSchema = object({
     .oneOf(['low', 'medium', 'high'], 'Invalid priority'),
 });
 
-const TaskForm = ({ onClose, ...data }) => {
+const TaskForm = ({ onClose, ...props }) => {
   const dispatch = useDispatch();
 
   // console.log(data.status)

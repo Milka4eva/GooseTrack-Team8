@@ -56,12 +56,14 @@ const TaskCardList = props => {
   };
 
   const defUser = require('../../images/defUser.jpg');
+ 
   return (
     <MainContainer>
       {!load && (
         <TaskListContainer>
           <ul>
             {props.task.map(({ _id, title, priority }) => (
+              
               <TaskItem key={_id}>
                 <TaskContainer>
                   <TaskText>{title}</TaskText>
