@@ -16,14 +16,14 @@ export const TaskInput = styled.input`
     margin-top: 8px;
     border: 1px solid #F6F6F6;
     color: ${({ theme }) => theme.textColors.modalText};
-    background-color: #F6F6F6 ;
+    background-color: ${({ theme }) => theme.bgColors.modalInputBg};
     border-radius: 8px;
 `
 
 export const Errors = styled.p`
   margin-top: 4px;
   margin-bottom: 2px;
-  stroke: red;
+  color: #DA1414;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
