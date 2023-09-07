@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as ReactDOM from 'react-dom';
-import {  useState } from 'react';
+import { useState } from 'react';
 
 import {
   TaskListContainer,
@@ -22,13 +22,13 @@ import useAuth from 'hooks/useAuth';
 import { deleteTaskOperation } from '../../redux/calendar/calendar.operations';
 import { TaskModal } from '../TaskModal/TaskModal';
 
-
 const TaskCardList = props => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [taskStatus, setTaskStatus] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [taskStatus, setTaskStatus] = useState('');
   const load = useSelector(state => state.calendar.isLoading);
   const { user } = useAuth();
-console.log(taskStatus)
+
+  // console.log(taskStatus);
   const dispatch = useDispatch();
 
   const colorStatus = status => {
@@ -47,13 +47,13 @@ console.log(taskStatus)
     }
   };
 
-    const onClose = () => {
-      setIsOpen(false);
-    };
-    const onOpen = e => {
-      setIsOpen(true);
-      setTaskStatus(e.currentTarget.name);
-    };
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  const onOpen = e => {
+    setIsOpen(true);
+    setTaskStatus(e.currentTarget.name);
+  };
 
   const defUser = require('../../images/defUser.jpg');
  
@@ -85,7 +85,7 @@ console.log(taskStatus)
                         </SvgIcon>
                       </SvgButton>
 
-                      <SvgButton name={title} onClick={onOpen}>
+                      <SvgButton name={_id} onClick={onOpen}>
                         <SvgIcon>
                           <use href={Icon + '#pencil'} />
                         </SvgIcon>
@@ -103,7 +103,10 @@ console.log(taskStatus)
 
                   {isOpen &&
                     ReactDOM.createPortal(
-                      <TaskModal onClose={onClose} status={taskStatus} props={props}/>,
+                      <TaskModal
+                        onClose={onClose}
+                        status={taskStatus}
+                      />,
                       document.querySelector('#modal-root')
                     )}
                 </TaskContainer>

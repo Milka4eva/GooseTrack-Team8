@@ -25,6 +25,8 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { isAfter, isValid, parse } from 'date-fns';
 import { object, string } from 'yup';
+import { selectTasks } from '../../redux/calendar/calendar.selectors';
+import { useSelector } from 'react-redux';
 
 const taskSchema = object({
   title: string()
@@ -56,18 +58,21 @@ const taskSchema = object({
     .oneOf(['low', 'medium', 'high'], 'Invalid priority'),
 });
 
-const TaskForm = ({ onClose, ...props }) => {
+const TaskForm = ({ onClose, ...data }) => {
   const dispatch = useDispatch();
-  // const data = props.data.task[0] ?? {};
-  const data = {};
-  const editForm = data.title ? true : false;
+
+  // console.log(data.status)
+  const userTasks = useSelector(selectTasks);
+  const tt = userTasks.filter(task => task._id === data.status);
+
+  const editForm = tt.length ? true : false;
   const category = data?.status || 'to-do';
 
   const initialValues = {
-    title: data?.title || '',
-    start: data?.start || '',
-    end: data?.end || '',
-    priority: data?.priority || 'low',
+    title: tt[0]?.title || '',
+    start: tt[0]?.start || '',
+    end: tt[0]?.end || '',
+    priority: tt[0]?.priority || 'low',
   };
 
   const { currentDate: date } = useParams();
@@ -76,12 +81,13 @@ const TaskForm = ({ onClose, ...props }) => {
     if (!editForm) {
       const payload = { ...values, date, category };
       dispatch(addTaskOperation(payload));
-      console.log(payload);
+      // console.log(payload);
       onClose();
     } else {
-      const payload = { ...values, date, category, _id: data._id };
-      console.log(payload)
+      const payload = { ...values, date, category, id: tt[0]._id };
       dispatch(editTaskOperation(payload));
+      console.log(payload);
+
       onClose();
     }
   };
