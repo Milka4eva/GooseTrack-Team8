@@ -29,12 +29,6 @@ export const Item = styled.li`
   justify-content: center;
   align-items: center;
   gap: 6px;
-
-  color: ${theme =>
-    theme.item === 'SAT' || theme.item === 'SUN'
-      ? 'var(--main-blue-color);'
-      : theme.textColors.textSecondary};
-
   .today {
     color: white;
     background-color: #3e85f3;

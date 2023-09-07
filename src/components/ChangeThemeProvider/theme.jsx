@@ -56,6 +56,7 @@ export const lightTheme = {
     calendar: 'rgba(220, 227, 229, 0.50)',
     addTask: '#3E85F3',
     taskBorder: 'rgba(220, 227, 229, 0.8)',
+    statisticBorder: '#E3F3FF',
   },
   dayMonthSwicher: {
     bgColor: '#E3F3FF',
@@ -145,6 +146,7 @@ export const darkTheme = {
     acviveNavLink: '#FFFFFF',
     modalText: '#FFFFFF',
     modalLabel: '#FAFAFA4D',
+    textSecondary: '#ffffff',
     taskText: '#FFFFFF',
     sidebarTextButton: '#FFFFFF',
     hoverSidebarTextButton: '#FFFFFF',
@@ -154,6 +156,7 @@ export const darkTheme = {
     calendar: 'rgba(255, 255, 255, 0.15)',
     addTask: '#3E85F3',
     taskBorder: 'rgba(255, 255, 255, 0.15)',
+    statisticBorder: '#E3F3FF26',
   },
   dayMonthSwicher: {
     bgColor: '#21222C',

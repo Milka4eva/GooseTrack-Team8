@@ -8,6 +8,7 @@ import './custom-datepicker.css';
 import {
   StatisticsWrapper,
   MonthSelectionSection,
+  MonthAndLegendWrapper,
   LegendSection,
   LegendParagraph,
   PrevDayBtn,
@@ -30,6 +31,7 @@ import {
   RowPercentageDay,
   RowPercentageMonth,
   PercentageValue,
+  PercentageHolder,
 } from './Statistics.styled';
 
 function Statistics() {
@@ -40,6 +42,9 @@ function Statistics() {
   const [toDoMonth, setToDoMonth] = useState(0);
   const [inProgressMonth, setInProgressMonth] = useState(0);
   const [doneMonth, setDoneMonth] = useState(0);
+  const [toDoDay, setToDoDay] = useState(0);
+  const [inProgressDay, setInProgressDay] = useState(0);
+  const [doneDay, setDoneDay] = useState(0);
   const percentageRowHight = 246;
   const fullCurrentDate = new Date(currentDate);
   const decreaseDayByOne = () => {
@@ -60,12 +65,10 @@ function Statistics() {
       return;
     }
 
-    // Initialize counters for each category
     let todoCount = 0;
     let inProgressCount = 0;
     let doneCount = 0;
 
-    // Iterate through the tasks and count them by category
     for (const task of tasks) {
       switch (task.category) {
         case 'to-do':
@@ -78,21 +81,67 @@ function Statistics() {
           doneCount++;
           break;
         default:
-          // Handle unexpected category values, if any
           break;
       }
     }
 
-    // Calculate the total count of tasks
     const totalCount = tasks.length;
 
-    // Calculate the percentage of tasks in each category
     const todoPercentage = (todoCount / totalCount) * 100;
     const inProgressPercentage = (inProgressCount / totalCount) * 100;
     const donePercentage = (doneCount / totalCount) * 100;
     setDoneMonth(donePercentage.toFixed());
     setInProgressMonth(inProgressPercentage.toFixed());
     setToDoMonth(todoPercentage.toFixed());
+  };
+  const percentageDayCounting = tasks => {
+    if (!Array.isArray(tasks) || tasks.length === 0) {
+      setDoneDay(0);
+      setInProgressDay(0);
+      setToDoDay(0);
+      return;
+    }
+
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth() + 1).padStart(2, '0');
+    const day = String(startDate.getDate()).padStart(2, '0');
+    const dateString = `${year}-${month}-${day}`;
+    const currentDayTasks = tasks.filter(el => el.date === dateString);
+
+    let todoCount = 0;
+    let inProgressCount = 0;
+    let doneCount = 0;
+
+    if (!Array.isArray(currentDayTasks) || currentDayTasks.length === 0) {
+      setDoneDay(0);
+      setInProgressDay(0);
+      setToDoDay(0);
+      return;
+    }
+
+    for (const task of currentDayTasks) {
+      switch (task.category) {
+        case 'to-do':
+          todoCount++;
+          break;
+        case 'in-progress':
+          inProgressCount++;
+          break;
+        case 'done':
+          doneCount++;
+          break;
+        default:
+          break;
+      }
+    }
+
+    const totalCount = currentDayTasks.length;
+    const todoPercentage = (todoCount / totalCount) * 100;
+    const inProgressPercentage = (inProgressCount / totalCount) * 100;
+    const donePercentage = (doneCount / totalCount) * 100;
+    setDoneDay(donePercentage.toFixed());
+    setInProgressDay(inProgressPercentage.toFixed());
+    setToDoDay(todoPercentage.toFixed());
   };
 
   useEffect(() => {
@@ -103,61 +152,65 @@ function Statistics() {
       year,
     };
     dispatch(getTasksOfMonth(date));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, startDate]);
   useEffect(() => {
     percentageMonthCounting(tasks);
   }, [tasks]);
+  useEffect(() => {
+    percentageDayCounting(tasks);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tasks]);
   return (
     <StatisticsWrapper>
-      <MonthSelectionSection>
-        <ReactDatePicker
-          calendarStartDay={1}
-          dateFormat="d MMMM  yyyy "
-          minDate={new Date()}
-          selected={startDate}
-          className="custom-datepicker"
-          onChange={date => setStartDate(date)}
-          chooseDayAriaLabelPrefix="1"
-        />
-        <ButtonsWrapper>
-          {startDate <= fullCurrentDate ? (
-            <PrevDayBtn onClick={decreaseDayByOne} disabled={true}>
-              <PrevDayBtnIcon
-                disabled={true}
-                style={{
-                  stroke: '#dce3e5',
-                }}
-              >
-                <use href={Icons + '#next-calendar-btn'} />
-              </PrevDayBtnIcon>
-            </PrevDayBtn>
-          ) : (
-            <PrevDayBtn onClick={decreaseDayByOne}>
-              <PrevDayBtnIcon>
-                <use href={Icons + '#next-calendar-btn'} />
-              </PrevDayBtnIcon>
-            </PrevDayBtn>
-          )}
+      <MonthAndLegendWrapper>
+        <MonthSelectionSection>
+          <ReactDatePicker
+            calendarStartDay={1}
+            dateFormat="d MMMM  yyyy "
+            minDate={new Date()}
+            selected={startDate}
+            className="custom-datepicker"
+            onChange={date => setStartDate(date)}
+            chooseDayAriaLabelPrefix="1"
+          />
+          <ButtonsWrapper>
+            {startDate <= fullCurrentDate ? (
+              <PrevDayBtn onClick={decreaseDayByOne} disabled={true}>
+                <PrevDayBtnIcon
+                  disabled={true}
+                  style={{
+                    stroke: '#dce3e5',
+                  }}
+                >
+                  <use href={Icons + '#next-calendar-btn'} />
+                </PrevDayBtnIcon>
+              </PrevDayBtn>
+            ) : (
+              <PrevDayBtn onClick={decreaseDayByOne}>
+                <PrevDayBtnIcon>
+                  <use href={Icons + '#next-calendar-btn'} />
+                </PrevDayBtnIcon>
+              </PrevDayBtn>
+            )}
 
-          <NextDayBtn onClick={increaseDayByOne}>
-            <NextDayBtnIcon>
-              <use href={Icons + '#next-calendar-btn'} />
-            </NextDayBtnIcon>
-          </NextDayBtn>
-        </ButtonsWrapper>
-      </MonthSelectionSection>
-      <LegendSection>
-        <LegendParagraph>
-          <PinkMarker />
-          By Day
-        </LegendParagraph>
-        <LegendParagraph>
-          <BlueMarker />
-          By Month
-        </LegendParagraph>
-      </LegendSection>
+            <NextDayBtn onClick={increaseDayByOne}>
+              <NextDayBtnIcon>
+                <use href={Icons + '#next-calendar-btn'} />
+              </NextDayBtnIcon>
+            </NextDayBtn>
+          </ButtonsWrapper>
+        </MonthSelectionSection>
+        <LegendSection>
+          <LegendParagraph>
+            <PinkMarker />
+            By Day
+          </LegendParagraph>
+          <LegendParagraph>
+            <BlueMarker />
+            By Month
+          </LegendParagraph>
+        </LegendSection>
+      </MonthAndLegendWrapper>
       <StatsSection>
         <TasksHeading>Tasks</TasksHeading>
         <StatsTable>
@@ -189,9 +242,22 @@ function Statistics() {
             <StatsFooterRow>
               <StatsFooterRowText>
                 <RowPercentageWrapper>
-                  <RowPercentageDay>
-                    <PercentageValue>30%</PercentageValue>
+                  <RowPercentageDay
+                    style={{
+                      height: `${percentageRowHight * (toDoDay / 100)}px`,
+                    }}
+                  >
+                    <PercentageValue
+                      style={{
+                        bottom: `${
+                          percentageRowHight * (toDoDay / 100) + 40
+                        }px`,
+                      }}
+                    >
+                      {toDoDay}%
+                    </PercentageValue>
                   </RowPercentageDay>
+                  <PercentageHolder />
                   <RowPercentageMonth
                     style={{
                       height: `${percentageRowHight * (toDoMonth / 100)}px`,
@@ -200,7 +266,7 @@ function Statistics() {
                     <PercentageValue
                       style={{
                         bottom: `${
-                          percentageRowHight * (toDoMonth / 100) + 20
+                          percentageRowHight * (toDoMonth / 100) + 40
                         }px`,
                       }}
                     >
@@ -214,9 +280,22 @@ function Statistics() {
             <StatsFooterRow>
               <StatsFooterRowText>
                 <RowPercentageWrapper>
-                  <RowPercentageDay>
-                    <PercentageValue>30%</PercentageValue>
+                  <RowPercentageDay
+                    style={{
+                      height: `${percentageRowHight * (inProgressDay / 100)}px`,
+                    }}
+                  >
+                    <PercentageValue
+                      style={{
+                        bottom: `${
+                          percentageRowHight * (inProgressDay / 100) + 40
+                        }px`,
+                      }}
+                    >
+                      {inProgressDay}%
+                    </PercentageValue>
                   </RowPercentageDay>
+                  <PercentageHolder />
                   <RowPercentageMonth
                     style={{
                       height: `${
@@ -227,7 +306,7 @@ function Statistics() {
                     <PercentageValue
                       style={{
                         bottom: `${
-                          percentageRowHight * (inProgressMonth / 100) + 20
+                          percentageRowHight * (inProgressMonth / 100) + 40
                         }px`,
                       }}
                     >
@@ -241,9 +320,22 @@ function Statistics() {
             <StatsFooterRow>
               <StatsFooterRowText>
                 <RowPercentageWrapper>
-                  <RowPercentageDay>
-                    <PercentageValue>30%</PercentageValue>
+                  <RowPercentageDay
+                    style={{
+                      height: `${percentageRowHight * (doneDay / 100)}px`,
+                    }}
+                  >
+                    <PercentageValue
+                      style={{
+                        bottom: `${
+                          percentageRowHight * (doneDay / 100) + 40
+                        }px`,
+                      }}
+                    >
+                      {doneDay}%
+                    </PercentageValue>
                   </RowPercentageDay>
+                  <PercentageHolder />
                   <RowPercentageMonth
                     style={{
                       height: `${percentageRowHight * (doneMonth / 100)}px`,
@@ -252,7 +344,7 @@ function Statistics() {
                     <PercentageValue
                       style={{
                         bottom: `${
-                          percentageRowHight * (doneMonth / 100) + 20
+                          percentageRowHight * (doneMonth / 100) + 40
                         }px`,
                       }}
                     >

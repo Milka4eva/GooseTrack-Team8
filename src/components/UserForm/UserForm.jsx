@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/useAuth';
 import { updateUserInfo } from 'redux/auth/auth-operations';
 import { useFormik } from 'formik';
-// import moment from 'moment/moment';
 import moment from 'moment';
 import { validationSchema } from './ValidationSchema';
 import Icon from '../../images/icons.svg';
@@ -34,8 +33,7 @@ const UserForm = () => {
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
-  // const [birthdayNumber, setBirthdayNumber] = useState(null);
-  const [, setBirthdayNumber] = useState(null);
+  const [birthdayNumber, setBirthdayNumber] = useState(null);
 
   const [startDate] = useState(new Date('1920/01/01'));
   const [endDate] = useState(new Date());
@@ -52,19 +50,20 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
-    if (!date) setFieldValue('birthday', '');
+    if (!date) {
+      setFieldValue('birthday', '');
+      return;
+    }
 
-    // const formattedDate = moment(date.$d).format('YYYY/MM/DD');
-    // const formattedDate = moment(date).format('YYYY/MM/DD');
     const formattedDate = date.toISOString();
-    // console.log(formattedDate);
+
     setBirthdayNumber(date);
     setFieldValue('birthday', formattedDate);
     setIsFormDirty(true);
   };
 
   const formatPhoneNumber = value => {
-    const phoneNumber = value.replace(/[^\d]/g, ''); // Видаляємо всі нецифрові символи
+    const phoneNumber = value.replace(/[^\d]/g, '');
     const countryCode = phoneNumber.slice(0, 2);
     const areaCode = phoneNumber.slice(2, 5);
     const firstPart = phoneNumber.slice(5, 8);
@@ -83,7 +82,7 @@ const UserForm = () => {
     if (thirdPart) {
       formattedPhoneNumber += ` ${thirdPart}`;
     }
-    return formattedPhoneNumber.trim(); // Видаляємо зайві пробіли з початку та кінця рядка
+    return formattedPhoneNumber.trim();
   };
 
   const handlePhoneNumberChange = event => {
@@ -98,10 +97,9 @@ const UserForm = () => {
     setIsFormDirty(true);
   };
 
-  const currentDate = moment().format('YYYY/MM/DD');
-  // const currentDate = user.birthday
-  //   ? moment(user.birthday).format('YYYY/MM/DD')
-  //   : moment().format('YYYY/MM/DD');
+  const currentDate = user.birthday
+    ? moment(user.birthday).format('YYYY/MM/DD')
+    : moment().format('YYYY/MM/DD');
 
   const {
     errors,
@@ -138,12 +136,9 @@ const UserForm = () => {
     setFieldValue('phone', user.phone);
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
-    // if (user.birthday) {
-    //   setFieldValue('birthday', moment(user.birthday).format('YYYY/MM/DD'));
-    // }
 
     setSelectedImage(null || user.avatarUrl);
-    setBirthdayNumber(user.birthday);
+    setBirthdayNumber(user.birthday ? new Date(user.birthday) : null);
   }, [user, setFieldValue]);
 
   return (
@@ -169,7 +164,6 @@ const UserForm = () => {
           <Plus />
         </Label>
 
-        {/* <Heading>{user.name ? user.name : 'User Name'}</Heading> */}
         <Heading>{user.name}</Heading>
 
         <Title>User</Title>
@@ -193,7 +187,6 @@ const UserForm = () => {
               onBlur={handleBlur}
               isTouched={touched.name}
               hasError={errors.name}
-              // className={errors.name && touched.name ? 'InvalidInput' : ''}
             />
             {errors.name && touched.name && (
               <ErrorMessage>{errors.name}</ErrorMessage>
@@ -220,11 +213,9 @@ const UserForm = () => {
 
             <StyledDataPicker
               name="birthday"
-              // showIcon
               closeOnSelect={true}
               onChange={handleDatePickerChange}
-              // selected={birthdayNumber}
-              selected={new Date()}
+              selected={birthdayNumber ? new Date(birthdayNumber) : null}
               placeholderText={currentDate}
               dateFormat="yyyy/MM/dd"
               maxDate={endDate}
@@ -262,7 +253,6 @@ const UserForm = () => {
               onBlur={handleBlur}
               isTouched={touched.email}
               hasError={errors.email}
-              // className={errors.email && touched.email ? 'InvalidInput' : ''}
             />
             {errors.email && touched.email && (
               <ErrorMessage>{errors.email}</ErrorMessage>
@@ -297,7 +287,6 @@ const UserForm = () => {
               onBlur={handleBlur}
               isTouched={touched.phone}
               hasError={errors.phone}
-              // className={errors.phone && touched.phone ? 'InvalidInput' : ''}
             />
             {errors.phone && touched.phone && (
               <ErrorMessage>{errors.phone}</ErrorMessage>
@@ -330,7 +319,6 @@ const UserForm = () => {
               onBlur={handleBlur}
               isTouched={touched.skype}
               hasError={errors.skype}
-              // className={errors.skype && touched.skype ? 'InvalidInput' : ''}
             />
             {errors.skype && touched.skype && (
               <ErrorMessage>{errors.skype}</ErrorMessage>
