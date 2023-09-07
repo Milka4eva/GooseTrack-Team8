@@ -56,10 +56,11 @@ const taskSchema = object({
     .oneOf(['low', 'medium', 'high'], 'Invalid priority'),
 });
 
-const TaskForm = ({ onClose, ...data }) => {
+const TaskForm = ({ onClose, ...props }) => {
   const dispatch = useDispatch();
+  // const data = props.data.task[0] ?? {};
+  const data = {};
   const editForm = data.title ? true : false;
-  // console.log(data);
   const category = data?.status || 'to-do';
 
   const initialValues = {
@@ -79,6 +80,7 @@ const TaskForm = ({ onClose, ...data }) => {
       onClose();
     } else {
       const payload = { ...values, date, category, _id: data._id };
+      console.log(payload)
       dispatch(editTaskOperation(payload));
       onClose();
     }

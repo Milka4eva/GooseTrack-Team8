@@ -28,7 +28,7 @@ const TaskCardList = props => {
     const [taskStatus, setTaskStatus] = useState('');
   const load = useSelector(state => state.calendar.isLoading);
   const { user } = useAuth();
-
+console.log(taskStatus)
   const dispatch = useDispatch();
 
   const colorStatus = status => {
@@ -56,12 +56,14 @@ const TaskCardList = props => {
     };
 
   const defUser = require('../../images/defUser.jpg');
+ 
   return (
     <MainContainer>
       {!load && (
         <TaskListContainer>
           <ul>
             {props.task.map(({ _id, title, priority }) => (
+              
               <TaskItem key={_id}>
                 <TaskContainer>
                   <TaskText>{title}</TaskText>
@@ -101,7 +103,7 @@ const TaskCardList = props => {
 
                   {isOpen &&
                     ReactDOM.createPortal(
-                      <TaskModal onClose={onClose} status={taskStatus} />,
+                      <TaskModal onClose={onClose} status={taskStatus} props={props}/>,
                       document.querySelector('#modal-root')
                     )}
                 </TaskContainer>
