@@ -1,7 +1,7 @@
 import { persistReducer } from 'redux-persist';
 import { createSlice } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import * as auth  from '../auth/auth-operations';
+import * as auth from '../auth/auth-operations';
 
 import {
   getTasksOfMonth,
@@ -61,7 +61,7 @@ const calendarSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addTaskOperation.fulfilled, (state, { payload }) => {
-        state.tasks[state.indexCurrentDay].push(payload);
+        state.tasks.push(payload);
         state.error = null;
         state.isLoading = false;
       })
@@ -75,9 +75,7 @@ const calendarSlice = createSlice({
       .addCase(deleteTaskOperation.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks[state.indexCurrentDay] = state.tasks[
-          state.indexCurrentDay
-        ].filter(task => task._id !== payload._id);
+        state.tasks = state.tasks.filter(task => task._id !== payload._id);
       })
       .addCase(deleteTaskOperation.rejected, (state, { payload }) => {
         state.error = payload;

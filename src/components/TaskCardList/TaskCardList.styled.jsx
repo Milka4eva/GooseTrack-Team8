@@ -4,7 +4,7 @@ export const MainContainer = styled.div`
   background: ${({ theme }) => theme.bgColors.bgTaskList};
   height: 334px;
   max-width: 335px;
-  padding: 7px;
+  // padding: 7px;
   @media (min-width: 768px) {
     height: 372px;
    max- width: 301px;
@@ -31,6 +31,12 @@ export const TaskListContainer = styled.div`
     border-radius: 12px;
   }
 `;
+export const TaskItem = styled.li`
+  &:last-child {
+    margin-bottom: 40px;
+  }
+`;
+
 export const TaskContainer = styled.div`
   //   outline: 1px solid red;
   scroll-snap-align: start;

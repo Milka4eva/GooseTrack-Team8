@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import * as ReactDOM from 'react-dom';
+import {  useState } from 'react';
 
 import {
   TaskListContainer,
@@ -14,33 +15,21 @@ import {
   SvgButton,
   SvgIcon,
   MainContainer,
+  TaskItem,
 } from './TaskCardList.styled';
 import Icon from '../../images/cartIcon.svg';
-import { selectTasks } from '../../redux/calendar/calendar.selectors';
 import useAuth from 'hooks/useAuth';
 import { deleteTaskOperation } from '../../redux/calendar/calendar.operations';
+import { TaskModal } from '../TaskModal/TaskModal';
 
-const TaskCardList = () => {
-  const userTasks = useSelector(selectTasks);
+
+const TaskCardList = props => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [taskStatus, setTaskStatus] = useState('');
   const load = useSelector(state => state.calendar.isLoading);
   const { user } = useAuth();
-  const location = useLocation();
-  const pageDate = location.pathname.slice(14);
+
   const dispatch = useDispatch();
-
-  const currentTask = userTasks
-    .filter(userTasks => userTasks.date === pageDate)
-    .sort(sortForStatus);
-
-  function sortForStatus(a, b) {
-    if (a.priority === 'high') {
-      return 1;
-    }
-    if (b.priority === 'low') {
-      return 0;
-    }
-    return -1;
-  }
 
   const colorStatus = status => {
     switch (status) {
@@ -58,15 +47,22 @@ const TaskCardList = () => {
     }
   };
 
-  console.log(load);
+    const onClose = () => {
+      setIsOpen(false);
+    };
+    const onOpen = e => {
+      setIsOpen(true);
+      setTaskStatus(e.currentTarget.name);
+    };
+
   const defUser = require('../../images/defUser.jpg');
   return (
     <MainContainer>
       {!load && (
         <TaskListContainer>
           <ul>
-            {currentTask.map(({ _id, title, priority }) => (
-              <li key={_id}>
+            {props.task.map(({ _id, title, priority }) => (
+              <TaskItem key={_id}>
                 <TaskContainer>
                   <TaskText>{title}</TaskText>
                   <SubContainer>
@@ -87,7 +83,7 @@ const TaskCardList = () => {
                         </SvgIcon>
                       </SvgButton>
 
-                      <SvgButton>
+                      <SvgButton name={title} onClick={onOpen}>
                         <SvgIcon>
                           <use href={Icon + '#pencil'} />
                         </SvgIcon>
@@ -102,8 +98,14 @@ const TaskCardList = () => {
                       </SvgButton>
                     </IconContainer>
                   </SubContainer>
+
+                  {isOpen &&
+                    ReactDOM.createPortal(
+                      <TaskModal onClose={onClose} status={taskStatus} />,
+                      document.querySelector('#modal-root')
+                    )}
                 </TaskContainer>
-              </li>
+              </TaskItem>
             ))}
           </ul>
         </TaskListContainer>

@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 // import { PropTypes } from 'prop-types';
 import { Backdrop, Overlay, ModalWindow } from './Modal.styled';
 
-const Modal = ({onClose,children}) => {
+const Modal = ({ onClose, children }) => {
+  
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
