@@ -74,7 +74,7 @@ export const SideBarCloseBtn = styled.button`
 export const CloseBtnSvg = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: ${({ theme }) => theme.notChangedcolors.menuIcon};
+  stroke: ${({ theme }) => theme.textColors.main};
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;

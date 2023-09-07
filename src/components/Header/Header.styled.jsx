@@ -61,7 +61,7 @@ export const MenuButton = styled.button`
 export const MenuButtonIcon = styled.svg`
   width: 24px;
   height: 24px;
-  fill: ${props => props.theme.notChangedcolors.menuIcon};
+  fill: ${props => props.theme.textColors.main};
   @media (min-width: 768px) {
     width: 44px;
     height: 44px;
