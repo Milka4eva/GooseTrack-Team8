@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 export const StatisticPage = styled.div`
-  height: 100vh;
+  height: calc(100vh - 120px);
+  @media (min-width: 768px) {
+    height: calc(100vh - 132px);
+  }
+  @media (min-width: 1440px) {
+    height: calc(100vh - 118px);
+  }
 `;
 export const StatisticsWrapper = styled.div`
   padding: 28px 14px;
