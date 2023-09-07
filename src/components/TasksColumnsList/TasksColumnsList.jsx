@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as ReactDOM from 'react-dom';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
