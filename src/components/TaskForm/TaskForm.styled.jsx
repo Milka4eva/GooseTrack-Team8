@@ -119,11 +119,11 @@ export const RadioButton = styled.input`
     border: 1px solid var(--primary-background-color);
     ${({ value }) => {
       switch (value) {
-        case 'Low':
+        case 'low':
           return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';
-        case 'Medium':
+        case 'medium':
           return 'background-color: #f3b249; color: rgba(243, 178, 73, 0.3)';
-        case 'High':
+        case 'high':
           return 'background-color: #ea3d65; color: rgba(234, 61, 101, 0.3)';
         default:
           return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';

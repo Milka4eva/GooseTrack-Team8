@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { CalendarToolbar } from './CalendarToolbar/CalendarToolbar';
 import { PERIOD_TYPE_DAY, PERIOD_TYPE_MONTH } from './constants';
+import  TasksColumnsList  from '../../components/TasksColumnsList/TasksColumnsList';
 
 export default function CalendarDayView() {
   const { currentDate } = useParams();
@@ -23,6 +24,7 @@ export default function CalendarDayView() {
         periodType={PERIOD_TYPE_DAY}
         setPeriodType={switchToMonthPeriodType}
       />
+      <TasksColumnsList />
     </>
   );
 }

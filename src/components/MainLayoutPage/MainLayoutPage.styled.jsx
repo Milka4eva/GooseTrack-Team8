@@ -30,6 +30,8 @@ export const HeaderContainer = styled.div`
     width: 1151px;
     height: 100%;
     margin-left: 32px;
+    margin-right: 32px;
+
     padding-top: 41px;
     // margin-bottom: 32px;
   }

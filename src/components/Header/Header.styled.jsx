@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
     height: 44px;
   }
   @media (min-width: 1440px) {
-    max-width: 100%;
+    max-width: 1087px;
     margin-bottom: 33px;
     // padding:0 32px;
   }
