@@ -28,6 +28,7 @@ export const Item = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   gap: 6px;
   .today {
     color: white;
@@ -58,13 +59,13 @@ export const Item = styled.li`
 export const Day = styled.p`
   font-weight: 600;
   line-height: 18px;
-
+   color: ${({ theme }) => theme.userProfile.title};
   @media (min-width: 768px) {
     font-size: 14px;
   }
 `;
 
-export const Btn = styled.button`
+export const DateWeek  = styled.button`
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;
@@ -73,8 +74,8 @@ export const Btn = styled.button`
   border-radius: 6px;
 
   padding: 4px 6px;
-  color: ${({ theme }) => theme.textColors.calendarDate};
-  background-color: ${({ theme }) => theme.bgColors.page};
+  color: ${({ theme }) => theme.textColors.modalText};
+  background-color: inherit;
 
   @media (min-width: 768px) {
     font-size: 16px;
@@ -83,5 +84,23 @@ export const Btn = styled.button`
 
   @media (min-width: 1440px) {
     padding: 4px 8px;
+  }
+`;
+
+export const OtherDay = styled(DateWeek)`
+  &:hover,
+  :active,
+  :focus {
+     background-color: ${({ theme }) => theme.notChangedcolors.accentColor};
+  }
+ 
+`;
+
+export const ActiveDay = styled(DateWeek)`
+  &:hover,
+  :active,
+  :focus {
+     background-color: ${({ theme }) => theme.notChangedcolors.accentColor};
+       color:#fff;
   }
 `;

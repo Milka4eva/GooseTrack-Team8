@@ -1,9 +1,9 @@
 import { useDispatch,} from 'react-redux';
 import { useNavigate, useParams,  } from 'react-router-dom';
-import {  eachDayOfInterval, endOfISOWeek, format,  formatISO,  startOfISOWeek } from 'date-fns';
+import {  eachDayOfInterval, endOfISOWeek, format,  formatISO,  isSameDay,  startOfISOWeek } from 'date-fns';
 import {  addChoosedDay, addIndexCurrentDay } from '../../redux/calendar/calendar.slice';
 
-import { Btn, Day, Item, List } from './DayCalendarHead.styled';
+import {  OtherDay, ActiveDay, Day,  Item, List, } from './DayCalendarHead.styled';
 
 
 
@@ -52,14 +52,22 @@ export const DayCalendarHead = () => {
   return (
     <>
       <List>
-        {daysInWeek?.map((day, idx) => 
-              <Item key={idx}>
+        {daysInWeek?.map((day, idx) => {
+   const DateWeek = isSameDay(new Date(currentDay), new Date(day))
+            ? OtherDay
+            : ActiveDay;
+          return (
+            <Item key={idx}>
               <Day>{format(day, 'EEE').toUpperCase()}</Day>
                    {/* <Day>{format(day, 'EEE').slice(0, 1)}</Day> */}
-                   <Btn type="button" onClick={() => handleClick(day)}>
+                   <DateWeek  type="button" onClick={() => handleClick(day)}>
             {formattedDay(format(day, 'dd'))}
-          </Btn>
-             </Item>            
+          </DateWeek>
+             </Item>  
+          )
+ 
+        }
+                       
        )}
       </List>
     </>
