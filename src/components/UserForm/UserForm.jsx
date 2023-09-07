@@ -50,7 +50,10 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
-    if (!date) setFieldValue('birthday', '');
+    if (!date) {
+      setFieldValue('birthday', '');
+      return;
+    }
 
     const formattedDate = date.toISOString();
 
